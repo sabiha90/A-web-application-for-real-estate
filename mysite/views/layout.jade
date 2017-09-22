@@ -5,15 +5,34 @@ html
     link(rel='stylesheet', href='/stylesheets/style.css')
     link(rel="shortcut icon" href="/images/sfsu.jpg" type="image/jpg")
   body
-  #top
    header
-      h1 About me
-    .container
-      .main-content
-        block content
-      .sidebar
-        block sidebar
+      ul
+      li
+        a(href='default.asp') Home
+      |   
+      li
+        a(href='news.asp') News
+      |   
+      li
+        a(href='contact.asp') Contact
+      |   
+      li
+        a(href='about.asp') About
+      h1 Sabiha Barlaskar
+
+
+
+  .container
+        .main-content
+          block content
+        .sidebar
+          block sidebar
+        
+        
+          
+          
+      
+
     footer
       p Running on node with Express, Jade and Stylus
-      a(href='https://www.facebook.com/afreen90',target='_blank' title='find us on Facebook')
-      img.image(alt="follow me on facebook" src="//login.create.net/images/icons/user/facebook_40x40.png" border=0)
+      

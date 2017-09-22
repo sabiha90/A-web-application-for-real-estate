@@ -2,27 +2,87 @@ extends layout
 
 block content
   
-  p Welcome to #{title}
+
+
+
+  p
+    img.self_picture(src='/images/1.jpg',style="width:380px;height:580px;border:0;", align='middle')
+  
+  
+     
+
+block sidebar
 
   p
     | Hello, it seems you've just stumbled
-    | upon this page to know about me. I will
-    | take you for a ride in the journey of
-    | my life.
-
+    | upon this page to know about me. 
   p
-    |If you're just curious about my story,
+    |If you're just curious about my story, read along
     |or you just wanna grab my resume, 
-    |you're in the right spot.
+    |just 
+    a(href='/images/Resume.pdf', target='_blank') click here
 
-  p 
-    input(type='image', src='/images/2.png', alt='Submit', width='100', height='100',onclick='myFunction()')
+  br
+  br
+  p
+     |I believe in the adage, 
+     |"Change is the end result of true learning" 
+     |and being associated with Big data analytics, 
+     |my idea is to bring about a gamut of life 
+     |changing impacts in people's lives. 
+     |After joining Capgemini's Big Data 
+     |Analytics team, I learned about Hadoop 
+     |and R following which I worked on 
+     |numerous projects involving Hadoop like 
+     |detecting fraud rings in e-commerce transactions, 
+     |extract-transform-load telecommunication data etc. 
+     |That is when I developed a keen interest 
+     |in Big data analytics. 
+  br
+  p
+    |Drop in a message
+
+    form(action='', method='POST', enctype='multipart/form-data')
+      input(name='action', value='submit', type='hidden')
+      |  Your name:
+      br
+      |     
+      input(name='name', size='30', type='text')
+      br
+      |  Your email:
+      br
+      |     
+      input(name='email', size='30', type='text')
+      br
+      |  Your message:
+      br
+      |     
+      textarea(name='message', rows='7', cols='30')
+      br
+      |     
+      input(value='Send email', type='submit')
+
+
   
-  p#demo
-    script.
-      function myFunction(){
-      document.getElementById("demo").innerHTML = "Hello World";
-      }
-block sidebar
+  p
+    a(target='_blank', title='find us on Facebook', href='http://www.facebook.com/afreen90')
+      img(alt='follow me on facebook', src='//login.create.net/images/icons/user/facebook_30x30.png', border='0')
+    
 
-    img.image(src='/images/1.jpg')
+    a(target='_blank', title='follow me on twitter', href='http://www.twitter.com/PLACEHOLDER')
+      img(alt='follow me on twitter', src='//login.create.net/images/icons/user/twitter-b_30x30.png', border='0')
+
+
+    a(target='_blank', title='Linkedin', href='https://www.linkedin.com/in/sabihabarlaskar90')
+      img(alt='linkedin', src='/images/In-2C-34px-R.png', border='0')
+    
+    a(target='_blank', title='github', href='https://github.com/sabiha90')
+      img(alt='github', src='/images/GitHub-Mark-32px.png', border='0')
+
+
+
+
+    
+   
+
+

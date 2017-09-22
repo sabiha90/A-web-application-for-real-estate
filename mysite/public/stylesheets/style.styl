@@ -22,8 +22,12 @@ background-color = #faf9f0
 
 body
   font-family 'Georgia'
-  background-color background-color
+  
   color #444
+  background-image url('/images/w2.jpg')
+  background-repeat no
+  background-size cover
+  
   
 
 header
@@ -31,18 +35,43 @@ header
   padding 50px 10px
   color #fff
   font-size 25px
-  text-align center
+  text-align left
+  font-weight bold
+
+  
+    
+
+  li
+   
+    display inline
+    float right
+    list-style-type none
+  li a
+      display block
+      padding 8px
+      color white
+      text-align center
+      text-decoration none
+      padding: 14px 16px;
+  
+  li a:hover
+      background-color #FF5733
+    
+
 
   /*
    * Note the use of the `main-color`
    * variable and the `darken` function
    */
-  background-color main-color
+  background-color #F1C40F  
   border-bottom 1px solid darken(main-color, 30%)
   text-shadow 0px -1px 0px darken(main-color, 30%)
+  
+
+
 
 .container
-  width 500px
+  width 1000px
   margin 50px auto
   overflow hidden
 
@@ -54,28 +83,32 @@ header
     margin-bottom 20px
 
 .sidebar
-  float left
-  width 200px
+  float right
+  width 400px
+  padding-left 50px
+  padding-right 50px
+  padding-top 50px
+  padding-bottom 50px
+  height auto
+  background-color #F7DC6F  
+  text-align left
+  opacity .8
+  
 
-  .widget
 
-    /*
-     * Note the lack of vendor
-     * prefixes here. Nib will
-     * add them for us
-     */
-    border-radius 3px
-    border 1px solid #ccc
-    margin-left 20px
-    background-color background-color
-    box-shadow inset 0px 0px 0px 3px rgba(#fff, 0.8), 0px 3px 0px -2px rgba(#000, 0.1)
+  img
+    border-radius 4px
+    padding 5px
 
-  img 
+
+
+  rcorners 
     border 1px solid #ddd
     border-radius 4px
     padding 5px
-    width: 200px
-
+    width 200px
+ 
+ 
 
 img:hover 
     box-shadow: 0 0 2px 1px rgba(0, 140, 186, 0.5)
@@ -98,9 +131,44 @@ img:hover
 p
   line-height 1.8
 
+.inner_block 
+    display inline-block
+    float left
+    width 50%
+
+
+.inner_block img 
+    width 100%;
+    height auto
+    vertical-align middle
+
+
+.rcorners2 
+    border-radius 25px
+    border 2px solid #73AD21
+    padding 20px
+    width 200px
+    height 150px    
+
+.self_picture
+  float left
+  left-margin 0px
+  padding-left 0px
+
+
+ .text
+   float left
+  left-margin 0px
+  padding-left 0px
+
+
+   
+
 footer
-  width 500px
+  width auto
+  height 80px
   margin 50px auto
   border-top 1px dotted #ccc
   padding-top 5px
   font-size 13px
+  background-color #faf9f0
