@@ -6,7 +6,7 @@ block content
 
 
   p
-    img.self_picture(src='/images/1.jpg',style="width:380px;height:580px;border:0;", align='middle')
+    img.self_picture(src='/images/3.jpeg',style="width:650px;height:860px;border:0;", align='left')
   
   
      
@@ -42,25 +42,31 @@ block sidebar
   p
     |Drop in a message
 
-    form(action='', method='POST', enctype='multipart/form-data')
-      input(name='action', value='submit', type='hidden')
-      |  Your name:
-      br
-      |     
-      input(name='name', size='30', type='text')
-      br
-      |  Your email:
-      br
-      |     
-      input(name='email', size='30', type='text')
-      br
-      |  Your message:
-      br
-      |     
-      textarea(name='message', rows='7', cols='30')
-      br
-      |     
-      input(value='Send email', type='submit')
+    form#contact_form(action='#', method='POST', enctype='multipart/form-data')
+      .row
+        label(for='name') Your name:
+        br
+        | 
+        input#name.input(name='name', type='text', value='', size='30')
+        br
+      | 
+      .row
+        label(for='email') Your email:
+        br
+        | 
+        input#email.input(name='email', type='text', value='', size='30')
+        br
+      | 
+      .row
+        label(for='message') Your message:
+        br
+        | 
+        textarea#message.input(name='message', rows='7', cols='30')
+        br
+      | 
+      input(type='hidden', name='action', value='submit')
+      | 
+      input#submit_button(type='submit', value='Send email')
 
 
   

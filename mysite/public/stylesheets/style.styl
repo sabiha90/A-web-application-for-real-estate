@@ -24,7 +24,7 @@ body
   font-family 'Georgia'
   
   color #444
-  background-image url('/images/w2.jpg')
+  background-image url('/images/w4.jpg')
   background-repeat no
   background-size cover
   
@@ -55,7 +55,7 @@ header
       padding: 14px 16px;
   
   li a:hover
-      background-color #FF5733
+      background-color #F4D03F
     
 
 
@@ -63,8 +63,8 @@ header
    * Note the use of the `main-color`
    * variable and the `darken` function
    */
-  background-color #F1C40F  
-  border-bottom 1px solid darken(main-color, 30%)
+  background-color main-color
+  border-bottom 1px solid darken(main-color , 30%)
   text-shadow 0px -1px 0px darken(main-color, 30%)
   
 
@@ -90,7 +90,7 @@ header
   padding-top 50px
   padding-bottom 50px
   height auto
-  background-color #F7DC6F  
+  background-color #FEF5E7  
   text-align left
   opacity .8
   
@@ -172,3 +172,32 @@ footer
   padding-top 5px
   font-size 13px
   background-color #faf9f0
+
+
+label
+    &.required
+        &:after
+            content '*'
+            color red
+
+.row
+    margin 5px
+
+
+#submit_button
+    width 109px
+    height 34px
+    -webkit-border-radius 3px
+    -moz-border-radius 3px
+    border-radius 3px
+    background-color #86c5fa
+    -webkit-box-shadow inset 0 2px rgba(255,255,255,.29)
+    -moz-box-shadow inset 0 2px rgba(255,255,255,.29)
+    box-shadow inset 0 2px rgba(255,255,255,.29)
+    border solid 1px #77a4cb
+    font-weight bold
+    color #fff
+    margin-left 7px
+  #submit_button:hover
+      background-color #0000A0
+
