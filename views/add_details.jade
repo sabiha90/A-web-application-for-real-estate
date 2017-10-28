@@ -1,0 +1,118 @@
+html
+  head
+    title Add details
+    |     
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
+    |    
+    script(src='https://code.jquery.com/jquery-2.2.0.min.js')
+  body
+    #mainform.container.col-sm-12
+      #signupbox.mainbox.col-md-6.col-md-offset-3.col-sm-8.col-sm-offset-2(style=' margin-top:50px')
+        .panel.panel-info
+          .panel-heading
+            .panel-title Add details
+            |                             
+            
+          |  
+          |                         
+          .panel-body
+            form.form-horizontal(role='form', method='post', action='add_details', onsubmit='return checkblank(this);')
+              #signupalert.alert.alert-danger(style='display:none')
+               p Error:
+               |                                     
+               span
+            
+              .form-group
+               label.col-md-3.control-label(for='square_size') Square Size
+               |                                     
+               .col-md-9
+                input.form-control(type='number', name='square_size', placeholder='Eg. 2000')
+
+              .form-group
+               label.col-md-3.control-label(for='number_of_bedrooms') Number of Bedrooms
+               |                                     
+               .col-md-9
+                input.form-control(type='number', name='number_of_bedrooms', placeholder='Eg. 3')
+
+              .form-group
+               label.col-md-3.control-label(for='no_baths') Number of Baths
+               |                                     
+               .col-md-9
+                input.form-control(type='number', name='no_baths', placeholder='Eg. 2')
+
+              .form-group
+               label.col-md-3.control-label(for='lot_size') Lot Size
+               |                                     
+               .col-md-9
+                input.form-control(type='number', name='lot_size', placeholder='Eg. 3000')
+
+
+              .form-group
+               label.col-md-3.control-label(for='year_of_construction') Year of construction
+               |                                     
+               .col-md-9
+                input.form-control(type='number', name='year_of_construction', placeholder='Eg. 1987')
+
+              .form-group
+               label.col-md-3.control-label(for='property_type') Property Type
+               |                                     
+               .col-md-9
+                input.form-control(type='text', name='property_type', placeholder='Eg. Single Family Home')
+
+              .form-group
+               label.col-md-3.control-label(for='house_number') House Number
+               |                                     
+               .col-md-9
+                input.form-control(type='text', name='house_number', placeholder='Eg. 2022')
+
+              .form-group
+               label.col-md-3.control-label(for='street') Street Name
+               |                                     
+               .col-md-9
+                input.form-control(type='text', name='street', placeholder='Eg. Walnut Ave')
+            
+              .form-group
+               label.col-md-3.control-label(for='zipcode') Zipcode
+               |                                     
+               .col-md-9
+                input.form-control(type='text', name='zipcode', placeholder='Eg. 94538')
+             
+              .form-group
+               label.col-md-3.control-label(for='city') City
+               |                                     
+               .col-md-9
+                input.form-control(type='text', name='city', placeholder='Eg. San Francisco')
+                                          
+              .form-group
+               label.col-md-3.control-label(for='state') State
+               |                                     
+               .col-md-9
+                input.form-control(type='text', name='state', placeholder='Eg. CA')
+
+              .form-group
+               label.col-md-3.control-label(for='country') Country
+               |                                     
+               .col-md-9
+                input.form-control(type='text', name='country', placeholder='Eg. United States')
+              
+              .form-group
+               label.col-md-3.control-label(for='price') Price
+               |                                     
+               .col-md-9
+                input.form-control(type='number', name='price', placeholder='Eg. 4000.00')
+               
+              .form-group
+               label.col-md-3.control-label(for='image') Image
+               |                                     
+               .col-md-9
+                 input.form-control(type='file', name='image')
+                
+
+              .form-group
+              .col-md-offset-3.col-md-9
+                  button#btn-signup.btn.btn-info(type='submit')
+                   amp Add details
+
+
+         
+
