@@ -143,23 +143,49 @@ html
             | &#x9;&#x9;&#x9;&#x9;&#x9;   
             .panel-body
               .w3-bar-item
-              
-                select(id="select1", name="selectOption")
+                select(name="selectPicker", id="selOption",onchange="loadDoc()")
                    option(value='none') Sort Results By
                    option(value='price') Price
                    option(value='number_of_bedrooms') Number of Bedrooms
                    option(value='square_size') Square feet
+
         // SearchResult Items
         .col-xs-9.col-sm-9.col-md-9
           .container
-            #searchResult
+          #searchResult
             - each item in rows 
                #featureBox
-                    a(href="/home_search_results?id=#{item.id}"  id="id") 
+                    a(href="/home_search_results?id=#{item.id}") 
                      p.pricetag.overlay $#{item.price} 
                      img(src="/images/#{item.image}", style="height:250px;width:500px;")
                     p.text-center #{item.house_number}, #{item.street}, #{item.city}, #{item.state}, #{item.zipcode}
 
-
-      
     #footer  
+
+
+        script.
+         function loadDoc() {
+            var sel = document.getElementById("selOption");
+            var details = document.getElementById("featureBox");
+            var city_details = details.getElementsByTagName('p');
+            var str = city_details[1].innerHTML.split(',')[2];
+            console.log("hello",str);
+            var query = sel.value;
+            var url = "/sort?q="+query + "&city="+str.trim();
+            console.log(query);
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              console.log(document.getElementById("featureBox").innerHTML);
+
+              document.getElementById("searchResult").innerHTML = " ";
+
+              document.getElementById("searchResult").innerHTML = this.responseText;
+              
+              
+              
+             }
+           };
+            xhttp.open("GET", url, true);
+            xhttp.send();
+             }

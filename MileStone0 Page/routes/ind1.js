@@ -48,10 +48,6 @@ router.get('/header', function(req, res, next) {
 router.get('/footer', function(req, res, next) {
   res.render('footer', { title: ' Footer' });
 });
-router.get('/sort', function(req,res){
-  res.render('sort', {title: 'Sort'});
-});
-
 
 
 var mysql      = require('mysql');
@@ -384,6 +380,64 @@ router.get('/options', function(req,res){
         }
         
       });
+});
+
+router.get('/sort', function(req,res){
+  var val = req.query.q;
+  var city = req.query.city;
+  if (val=='price')
+  {
+    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY price ASC ", city, function (error, results, fields) {
+    console.log('this.sql',this.sql); 
+    if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          res.render('search_results',{"rows":results});
+        }
+  });   
+  
+  }
+
+  if (val=='number_of_bedrooms')
+  {
+    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY number_of_bedrooms ASC ", city, function (error, results, fields) {
+    console.log('this.sql',this.sql); 
+    if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          res.render('search_results',{"rows":results});
+        }
+  });
+  }
+  if (val=='square_size')
+  {
+    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY square_size ASC ", city, function (error, results, fields) {
+    console.log('this.sql',this.sql); 
+    if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          res.render('search_results',{"rows":results});
+        }
+  });
+  }      
 });
 
 
