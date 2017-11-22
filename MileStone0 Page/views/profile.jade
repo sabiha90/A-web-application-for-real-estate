@@ -1,0 +1,43 @@
+
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+    link(rel="shortcut icon" href="/images/sfsu.jpg" type="image/jpg")
+  body
+   header
+      ul
+      li
+        a(href='about.asp') About
+      |   
+      li
+        a(href='news.asp') News
+      |   
+      li
+        a(href='/message_details') Message Tab
+      |   ß
+      li
+        a(href='/home') Home
+      
+    
+    .container
+        .main-content
+
+         ul
+
+         - each item in person
+          p Welcome to your dashboard #{item.first_name}
+          li User Name: #{item.user_name} 
+          li First Name: #{item.first_name}
+          li Last Name: #{item.last_name} 
+          li Phone: #{item.mob_no}
+          li
+           a(href="/message_details?id=#{item.id}"  id="id") Messages
+          li
+           a(href="/add_details?id=#{item.id}"  id="id") Add Details
+          li 
+            a(href="/options?id=#{item.id}" id="options") Other Options
+       
+footer
+      p Running on node with Express, Jade and Stylus

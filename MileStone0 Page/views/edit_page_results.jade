@@ -1,0 +1,19 @@
+doctype html
+html
+  head
+    title= title
+
+  body
+
+  #options
+    p Select what do you want to do
+     select
+       option(value="None") Select
+       option(value="Edit") Edit
+       option(value="Delete") Delete
+  
+   #details
+     - each item in rows
+         img(src="/images/#{item.image}",style="height:200px;width:200px;")
+         p $ #{item.price}
+         p #{item.house_number},#{item.street},#{item.city},#{item.zipcode}

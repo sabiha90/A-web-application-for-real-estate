@@ -1,0 +1,146 @@
+doctype html
+html
+  head
+    title RECycle
+
+    meta(charset='utf-8')
+    | &#x9;
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    | &#x9;
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+    | &#x9;
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    | &#x9;
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    | &#x9;
+    link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
+    |     
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    |     
+    link(rel='stylesheet', href='https://www.w3schools.com/w3css/4/w3.css')
+
+    | &#x9;
+    style.
+      
+      .search_disp {
+      width: 500%;
+      }
+      .navbar {
+      height:100px;
+      }
+      .navbar-custom {
+      background-color:#8d3fbc;
+      color:#ffffff;
+      border-radius:0;
+      }
+      .navbar-custom .navbar-nav > li > a {
+      color:#fff;
+      }
+      .navbar-custom .navbar-nav > .active > a {
+      color: #ffffff;
+      background-color:transparent;
+      }
+      .navbar-custom .navbar-nav > li > a:hover,
+      .navbar-custom .navbar-nav > li > a:focus,
+      .navbar-custom .navbar-nav > .active > a:hover,
+      .navbar-custom .navbar-nav > .active > a:focus,
+      .navbar-custom .navbar-nav > .open >a {
+      text-decoration: none;
+      background-color: #8d3fbc;
+      }
+      .navbar-custom .navbar-brand {
+      color:#eeeeee;
+      }
+      .navbar-custom .navbar-toggle {
+      background-color:#eeeeee;
+      }
+      .navbar-custom .icon-bar {
+      background-color:#8d3fbc;
+      }
+      .navbar-custom .navbar-nav .dropdown-menu  {
+      background-color: #8d3fbc;
+      }
+      .navbar-custom .navbar-nav .dropdown-menu>li>a  {
+      color: #fff;
+      }
+      .navbar-custom .navbar-nav .dropdown-menu>li>a:hover,.navbar-custom .navbar-nav .dropdown-menu>li>a:focus  {
+      color: #8d3fbc;
+      }
+      .glyphicon {
+      padding: 1px;
+      }
+      .navbar-header, .collapse {
+      padding-top: 20px;
+      }
+  | &#x9;
+  body
+    header
+      nav.navbar.navbar-custom(role='navigation')
+        .navbar-header
+          p.navbar-brand RECycle
+        
+        #bs-example-navbar-collapse-1.collapse.navbar-collapse
+          .col-sm-7.col-md-7
+             form.navbar-form(role='form', method='post',action='search')
+              select.selectpicker.form-control( name="selectpicker",id ="zip",data-style='btn-danger')
+                  option(value='none') Select
+                 
+                  option(value='zipcode') Zipcode
+                 
+                  option(value='city') City
+                  
+                  option(value='street') Street Name
+               span#search.search_disp
+                  input.form-control(type='text', placeholder='Search', name='q')
+              form(role='form',method='post',action='search')
+                 button.btn.btn-default(type='submit')
+                  i.glyphicon.glyphicon-search
+            
+            script.
+              var sel = document.getElementById("zip");
+              var tex = document.getElementById("search");
+              console.log(sel);
+              console.log(tex);
+              sel.addEventListener("change", function() {
+              if (sel.value == 'zipcode') {
+              tex.innerHTML = "<input type='text' class = 'form-control' name  = 'zipcode' placeholder='Eg.94536'/>";
+              } else if (sel.value == 'city') {
+              tex.innerHTML = "<input type='text' class = 'form-control' name = 'city' placeholder='San Francisco'/>";
+              } else {
+              tex.innerHTML = "<input type='text' class = 'form-control' name = 'street' placeholder='Euclid Ave'/>";
+              }
+              });
+          ul.nav.navbar-nav.pull-right
+            li
+              a(href='search')
+               | Home
+            li
+              a#login(href='login')
+                span.glyphicon.glyphicon-log-in
+                |   Login
+            li
+              a#signout(href='signup')
+                span.glyphicon.glyphicon-registration-mark
+                |   Sign Up
+            
+            li.dropdown
+              a.dropdown-toggle(href='#', data-toggle='dropdown')
+                span.glyphicon.glyphicon-th-large
+                b.caret
+              
+              ul.dropdown-menu.dropdown-menu-right
+                li
+                  a(href='#') Action
+               
+                li
+                  a(href='#') Another action
+               
+                li
+                  a(href='#') Something else here
+              
+                li.divider
+                
+                li
+                  a(href='#') Logout
+                
+                li.divider

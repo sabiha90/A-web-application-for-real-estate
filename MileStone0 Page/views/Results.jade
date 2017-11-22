@@ -1,0 +1,35 @@
+
+doctype html
+html
+  head
+    title= title
+        link(rel="shortcut icon" href="/images/sfsu.jpg" type="image/jpg")
+  body
+
+  
+   
+   #options
+
+       
+      select(id="select1", name="selectOption", onchange="getSelectedItem('select1', result);")
+                 option(value='none') Sort Results By
+                 option(value='price') Price
+                 option(value='number_of_bedrooms') Number of Bedrooms
+                 option(value='square_size') Square feet
+  
+      #details   
+        if (rows=='Sorry Not FOund!')
+           p #{rows}
+         else
+      
+
+
+           - each item in rows 
+
+              
+              a(href="/home_search_results?id=#{item.id}"  id="id") 
+                img(src="/images/#{item.image}",style="height:300px;width:300px;")
+              p Price : $ #{item.price}
+
+
+    

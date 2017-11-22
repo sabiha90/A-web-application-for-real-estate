@@ -1,0 +1,13 @@
+doctype html
+html
+  head
+    |     
+    title Hello
+  body
+   p Messages
+   ul
+         - each item in rows
+          li #{item.messages}
+          li From: #{item.bname}
+          li Email: #{item.bemail}
+          li Phone: #{item.vphone}
