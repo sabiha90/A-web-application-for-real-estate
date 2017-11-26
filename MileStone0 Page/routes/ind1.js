@@ -48,7 +48,9 @@ router.get('/header1', function(req, res, next) {
 router.get('/footer', function(req, res, next) {
   res.render('footer', { title: ' Footer' });
 });
-
+router.get('/seller_header', function(req, res, next) {
+  res.render('seller_header', { title: 'Search bar' });
+});
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({

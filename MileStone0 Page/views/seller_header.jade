@@ -1,10 +1,6 @@
-
 doctype html
 html
   head
-    title= title
-    
-    link(rel="shortcut icon" href="/images/sfsu.jpg" type="image/jpg")
     title RECycle
     // Using Bootstrap3.3.7
     meta(charset='utf-8')
@@ -204,38 +200,7 @@ html
       #flipkart-navbar {
       margin-bottom: 15px;
       }
-    // Load Header and Footer
-    script.
-      $(function() {
-      $("#header").load("/seller_header");
-      $("#footer").load("/footer");
-      });
-    | &#x9;
-    | &#x9;
-    style.
-      #background {
-      
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG');
-      background-repeat: no-repeat;
-      background-attachment: fixed;
-      background-size: cover;
-      opacity: 0.2;
-      filter:alpha(opacity=40);
-      }
-      ul {list-style:none;}
-    | &#x9;
-    | &#x9;
-    title RECycle
-  | &#x9;
   body
-    // Background
-    #background
-    // Header
-   - each item in person
     header
       #flipkart-navbar
         .container
@@ -244,9 +209,9 @@ html
               li.upper-links
                 a.links(href='homepage') Home
               li.upper-links
-                a.links(href="/message_details?id=#{item.id}"  id="id") Messages
+                a.links(href='login') Messages
               li.upper-links
-                a.links(href="/add_details?id=#{item.id}"  id="id") Add Details
+                a.links(href='login') Edit Details
               li.upper-links
                 a.links(href='login') Logout
               li.upper-links
@@ -254,7 +219,23 @@ html
               li.upper-links
                 a.links(href='http://clashhacks.in/')
                   svg(width='16px', height='12px', style='overflow: visible;')
-              
+              li.upper-links.dropdown
+                span.glyphicon.glyphicon-th-large
+                ul.dropdown-menu
+                  li.profile-li
+                    a.profile-links(href='http://yazilife.com/') Profile
+                  li.profile-li
+                    a.profile-links(href='http://hacksociety.tech/') Sell a Property
+                  li.profile-li
+                    a.profile-links(href='http://clashhacks.in/') Selling Properties DashBoard
+                  li.profile-li
+                    a.profile-links(href='http://clashhacks.in/') Link
+                  li.profile-li
+                    a.profile-links(href='http://clashhacks.in/') Link
+                  li.profile-li
+                    a.profile-links(href='http://clashhacks.in/') Link
+                  li.profile-li
+                    a.profile-links(href='http://clashhacks.in/') Sign Out
           .row.row2
             .col-sm-3
               h2(style='margin:0px;')
@@ -274,19 +255,3 @@ html
         a.profile-links(href='http://clashhacks.in/') Link
         | <
         a.profile-links(href='http://clashhacks.in/') Sign Out
-    | &#x9;&#x9;
-    
-    .container
-        .main-content
-
-        ul
-
-         
-          p Welcome to your dashboard #{item.first_name}
-          li User Name: #{item.user_name} 
-          li First Name: #{item.first_name}
-          li Last Name: #{item.last_name} 
-          li Phone: #{item.mob_no}
-          li 
-            a(href="/options?id=#{item.id}" id="options") Other Options
-       
