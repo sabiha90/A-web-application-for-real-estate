@@ -125,13 +125,13 @@ html
     #background
     // Header
     #header  
-    // SearchResult Text
+    
     h4 Search Result...
     // ArrowLine Image
     img#lineimage(src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Flowchart_Line.svg/1280px-Flowchart_Line.svg.png')
     | &#x9;&#x9;
     br
-    // SearchResult Content
+    
     .container-fluid
       .row
         br
@@ -149,7 +149,7 @@ html
                    option(value='number_of_bedrooms') Number of Bedrooms
                    option(value='square_size') Square feet
 
-        // SearchResult Items
+     
         .col-xs-9.col-sm-9.col-md-9
           .container
           #searchResult
@@ -178,7 +178,7 @@ html
             if (this.readyState == 4 && this.status == 200) {
               console.log(document.getElementById("featureBox").innerHTML);
 
-              document.getElementById("searchResult").innerHTML = " ";
+              
 
               document.getElementById("searchResult").innerHTML = this.responseText;
               

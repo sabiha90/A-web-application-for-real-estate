@@ -3,8 +3,8 @@ var express = require('express');
 var router = express.Router();
 var fs = require('fs');
 
-router.get('/search', function(req, res, next) {
-  res.render('search', { title: 'Search bar' });
+router.get('/homepage', function(req, res, next) {
+  res.render('homepage', { title: 'Search bar' });
 });
 
 router.get('/add_details', function(req, res, next) {
@@ -41,8 +41,8 @@ router.get('/sample', function(req, res, next) {
   res.render('sample', { title: ' Sample' });
 });
 
-router.get('/header', function(req, res, next) {
-  res.render('header', { title: ' Header' });
+router.get('/header1', function(req, res, next) {
+  res.render('header1', { title: ' Header' });
 });
 
 router.get('/footer', function(req, res, next) {
@@ -398,7 +398,8 @@ router.get('/sort', function(req,res){
           })
         }
         else{
-          res.render('search_results',{"rows":results});
+          //res.render('search_results',{"rows":results});
+          res.send({"rows":results});
         }
   });   
   
@@ -417,7 +418,7 @@ router.get('/sort', function(req,res){
           })
         }
         else{
-          res.render('search_results',{"rows":results});
+          res.send({"rows":results});
         }
   });
   }
@@ -434,7 +435,7 @@ router.get('/sort', function(req,res){
           })
         }
         else{
-          res.render('search_results',{"rows":results});
+          res.send({"rows":results});
         }
   });
   }      
