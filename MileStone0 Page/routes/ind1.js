@@ -6,7 +6,9 @@ var fs = require('fs');
 router.get('/homepage', function(req, res, next) {
   res.render('homepage', { title: 'Search bar' });
 });
-
+router.get('/search', function(req, res, next) {
+  res.render('search', { title: 'Search bar' });
+});
 router.get('/add_details', function(req, res, next) {
   var id = req.query.id;
   var results = '';

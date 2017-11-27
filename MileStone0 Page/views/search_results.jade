@@ -19,7 +19,7 @@ html
     // Load Header and Footer
     script.
       $(function() {
-      $("#header").load("/header");
+      $("#header").load("/header1");
       $("#footer").load("/footer");
       });
     | &#x9;
@@ -98,7 +98,7 @@ html
       width: 100%
       }
       #background {
-      position: fixed;
+      position: relative;
       top: 0;
       left: 0;
       width: 100%;
@@ -163,7 +163,8 @@ html
     #footer  
 
 
-        script.
+      script.
+ 
          function loadDoc() {
             var sel = document.getElementById("selOption");
             var details = document.getElementById("featureBox");
@@ -178,12 +179,41 @@ html
             if (this.readyState == 4 && this.status == 200) {
               console.log(document.getElementById("featureBox").innerHTML);
 
-              
+              var data = this.responseText;
+              var jsonResponse = JSON.parse(data);
+              var rows = jsonResponse.rows;
+              var divResults = document.getElementById("searchResult");
+             
+              divResults.innerHTML = "";
 
-              document.getElementById("searchResult").innerHTML = this.responseText;
+              alert(divResults.id);
+
+              for (var i = 0; i < rows.length; i++){
+                var row = rows[i];
+                var div = document.createElement("div");
+                var p1 = document.createElement("p");
+                var img = document.createElement("img");
+                var a = document.createElement("a");
+                var p2 = document.createElement("p");
+
+      
+                a.setAttribute("href","/home_search_results?id=" + row.id);
+                p1.setAttribute("class","pricetag overlay");
+                p1.innerHTML = "$" + row.price;
+                img.setAttribute("src", "/images/" + row.image);
+                img.setAttribute("height","250px");
+                img.setAttribute("width","500px");
+                p2.setAttribute("class","text-center");
+                p2.innerHTML = row.house_number + ", " + row.street + ", " + row.city + ", " + row.state;
+                div.setAttribute("id","featureBox");
+
               
-              
-              
+                a.appendChild(p1);
+                a.appendChild(img);
+                div.appendChild(a);
+                div.appendChild(p2);
+                divResults.appendChild(div);
+              }              
              }
            };
             xhttp.open("GET", url, true);
