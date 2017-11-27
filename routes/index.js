@@ -40,11 +40,6 @@ router.get('/home', function(req, res, next) {
   res.render('home', { title: 'About me' });
 });
 
-
-router.get('/search', function(req, res, next) {
-  res.render('search', { title: 'Search bar' });
-});
-
 router.get('/add_details', function(req, res, next) {
   var id = req.query.id;
   var results = '';

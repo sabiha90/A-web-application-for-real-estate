@@ -152,7 +152,7 @@ html
             .panel-body
               .w3-bar-item
                 select(name="selectPicker", id="selOption",onchange="loadDoc()")
-                   option(value='none') Sort Results By
+                   option(value='none') Filter Results By
                    option(value='price') Price
                    option(value='number_of_bedrooms') Number of Bedrooms
                    option(value='square_size') Square feet
@@ -194,7 +194,7 @@ html
              
               divResults.innerHTML = "";
 
-              alert(divResults.id);
+             
 
               for (var i = 0; i < rows.length; i++){
                 var row = rows[i];
