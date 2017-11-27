@@ -14,7 +14,7 @@ html
 
   ul
       li
-        a(href='/login') Login
+        a(href='login') Login
       li
         a(href='/home') About us
       li
@@ -36,7 +36,7 @@ html
     .col-md-6.col-md-offset-3
 
        p Search for properties by 
-        form.search-form(role='form', method='post',action='dropdownW W')
+        form.search-form(role='form', method='post',action='dropdownW W',maxlength=40)
           select(name="selectpicker" id ="activity")
            option(value = 'none') Select
            option(value = 'zipcode') Zipcode
@@ -52,7 +52,7 @@ html
 
       
 
-      form.search-form(role='form', method='post',action='search')
+      form.search-form(role='form', method='post', action='search')
         .form-group.has-feedback
           label.sr-only(for='search') Search
           #search
@@ -67,16 +67,16 @@ html
           sel.addEventListener("change", function() {
             if(sel.value == 'zipcode')
             {
-               tex.innerHTML = "<input type='text' class = 'form-control' name  = 'zipcode' placeholder='Eg.94536'/>";
+               tex.innerHTML = "<input type='text' pattern= '[0-9]{5,5}' class = 'form-control' name = 'zipcode' placeholder='Eg.94536'/>";
             }
             else if(sel.value == 'city')
             {
-               tex.innerHTML = "<input type='text' class = 'form-control' name = 'city' placeholder='San Francisco'/>";
+               tex.innerHTML = "<input type='text' pattern= '[A-Za-z]{40}' class = 'form-control' name = 'city' placeholder='San Francisco'/>";
     
             }
             else 
             {
-                tex.innerHTML = "<input type='text' class = 'form-control' name = 'street' placeholder='Euclid Ave'/>";
+                tex.innerHTML = "<input type='text' pattern= '[A-Za-z]{40}'  class = 'form-control' name = 'street' placeholder='Euclid Ave'/>";
             }
 
             }); 

@@ -1,51 +1,230 @@
 doctype html
 html
   head
-    title= title
-        link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
-        link(rel="shortcut icon" href="/fa17g13/images/sfsu.jpg" type="image/jpg")
-        link(rel='stylesheet', href='/fa17g13/stylesheets/login.css')
-
-        
-  body
-    a(href='search') Back to search
-  
-    .container
-  
+    meta(charset='utf-8')
+    | &#x9;
+    meta(name='viewport', content='width=device-width, initial-scale=1')
+    | &#x9;
+    script(src='https://code.jquery.com/jquery-3.2.1.js', integrity='sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=', crossorigin='anonymous')
+    | &#x9;
+    link(rel='stylesheet', href='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css', integrity='sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u', crossorigin='anonymous')
+    | &#x9;
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    | &#x9;
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    | &#x9;
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    | &#x9;
+    script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
+    // Load Header and Footer
+    script.
+      $(function() {
+      $("#header").load("header");
+      $("#footer").load("footer");
+      });
+    | &#x9;
+    | &#x9;
+    | &#x9;
+    | &#x9;
+    | &#x9;
+    title RECycle
+    | &#x9;
+    | &#x9;
+    style.
+      .pricetag {
+      text-align: center;
+      color: #000000;
+      font-size: 150%;
+      font-weight: bold;
+      }
+      #featureBox {
+      position: relative;
+      display: inline-block;
+      width: 500px;
+      height: 300px;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      margin: 10px;
+      margin-top: 50px;
+      }
+      #featureBox:hover {
+      -webkit-filter: drop-shadow(8px 8px 10px black);
+      filter: drop-shadow(8px 8px 10px black);
+      }
+      #featureBox:hover .overlay {
+      bottom: 80%;
+      height: 20%;
+      }
+      #featureImage {
+      width: 500px;
+      height: 250px;
+      }
+      .normalBox {
+      position: relative;
+      display: inline-block;
+      width: 250px;
+      height: 300px;
+      background-color: white;
+      box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+      margin: 10px;
+      }
+      .normalBox:hover {
+      -webkit-filter: drop-shadow(8px 8px 10px black);
+      filter: drop-shadow(8px 8px 10px black);
+      }
+      .normalBox:hover .overlay {
+      bottom: 80%;
+      height: 20%;
+      }
+      .normalImage {
+      width: 250px;
+      height: 250px;
+      }
+      .overlay {
+      position: absolute;
+      bottom: 100%;
+      top: 0;
+      left: 80%;
+      right: 0;
+      background-color: #008CBA;
      
-    .row
+      width: 20%;
+      height:0;
+      opacity: 0.9;
+      transition: .5s ease;
+      }
+      body {
+      position: relative;
+      opacity: 0.8;
+      }
+      .panel {
+      width: 100%
+      }
+      #background {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG');
+      background-repeat: no-repeat;
+      background-attachment: fixed;
+      background-size: cover;
+      opacity: 0.2;
+      filter:alpha(opacity=40);
+      z-index: -1;
+      }
+      #lineimage {
+      position: relative;
+      width: 50%;
+      height: 5px;
+      }
+      .container-fluid {
+      position: relative;
+      display: inline-block;
+      }
+      .panel-primary {
+      border-color: #337ab7;
+      margin-top: 60px;
+      }
+  | &#x9;
+  body
+    // Background
+    #background
+    // Header
+    #header  
     
-    .col-md-4.col-md-offset-3
+    h4 Search Result...
+    // ArrowLine Image
+    img#lineimage(src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Flowchart_Line.svg/1280px-Flowchart_Line.svg.png')
+    | &#x9;&#x9;
+    br
+    
+    .container-fluid
+      .row
+        br
+        // Filter Panel
+        .col-xs-6.col-sm-3.col-md-3
+          .panel.panel-primary
+            .panel-heading
+              h3.panel-title Filter
+            | &#x9;&#x9;&#x9;&#x9;&#x9;   
+            .panel-body
+              .w3-bar-item
+                select(name="selectPicker", id="selOption",onchange="loadDoc()")
+                   option(value='none') Sort Results By
+                   option(value='price') Price
+                   option(value='number_of_bedrooms') Number of Bedrooms
+                   option(value='square_size') Square feet
 
-      form.search-form(role='form', method='post',action='search')
-        .form-group.has-feedback
-          label.sr-only(for='search') Search
-          input#search.form-control(type='text', name='search', placeholder='Eg.94536')
-          .form-group(style='margin-top:10px')
+     
+        .col-xs-9.col-sm-9.col-md-9
+          .container
+          #searchResult
+            - each item in rows
+               #featureBox
+                    a(href="home_search_results?id=#{item.id}") 
+                     p.pricetag.overlay $#{item.price} 
+                     img(src="#{item.image}", style="height:250px;width:500px;")
+                    p.text-center #{item.house_number}, #{item.street}, #{item.city}, #{item.state}, #{item.zipcode}
 
-               button#btn-login.btn.btn-success(type='submit') Search  
-      if (rows=="Sorry Not Found!")
-           p #{rows}
-      else 
-        - each item in rows
-         table
-           tr
-            td 
-             ul(style='list-style-type:none;')
-              li Property Type: #{item.property_type}
-              li Price: $#{item.price}
-              li Area in square feet: #{item.square_size} feet
-              li Lot Size: #{item.lot_size}feet
-              li Number of Bedrooms: #{item.number_of_bedrooms}
-              li Number of Baths: #{item.no_baths}
-              li House Number: #{item.house_number}
-              li Zipcode: #{item.zipcode}
-              li Street Name: #{item.street}
-              li City: #{item.city}
-              li State: #{item.state}
-            td
-            td
-            td
-              img(src='#{item.image}' style="width:200px;height:200px;border:0;align:right;") 
-               
-         
+    #footer  
+
+
+      script.
+ 
+         function loadDoc() {
+            var sel = document.getElementById("selOption");
+            var details = document.getElementById("featureBox");
+            var city_details = details.getElementsByTagName('p');
+            var str = city_details[1].innerHTML.split(',')[2];
+            console.log("hello",str);
+            var query = sel.value;
+            var url = "sort?q="+query + "&city="+str.trim();
+            console.log(query);
+            var xhttp = new XMLHttpRequest();
+            xhttp.onreadystatechange = function() {
+            if (this.readyState == 4 && this.status == 200) {
+              console.log(document.getElementById("featureBox").innerHTML);
+
+              var data = this.responseText;
+              var jsonResponse = JSON.parse(data);
+              var rows = jsonResponse.rows;
+              var divResults = document.getElementById("searchResult");
+             
+              divResults.innerHTML = "";
+
+              alert(divResults.id);
+
+              for (var i = 0; i < rows.length; i++){
+                var row = rows[i];
+                var div = document.createElement("div");
+                var p1 = document.createElement("p");
+                var img = document.createElement("img");
+                var a = document.createElement("a");
+                var p2 = document.createElement("p");
+
+      
+                a.setAttribute("href","home_search_results?id=" + row.id);
+                p1.setAttribute("class","pricetag overlay");
+                p1.innerHTML = "$" + row.price;
+                img.setAttribute("src", row.image);
+                img.setAttribute("height","250px");
+                img.setAttribute("width","500px");
+                p2.setAttribute("class","text-center");
+                p2.innerHTML = row.house_number + ", " + row.street + ", " + row.city + ", " + row.state;
+                div.setAttribute("id","featureBox");
+
+              
+                a.appendChild(p1);
+                a.appendChild(img);
+                div.appendChild(a);
+                div.appendChild(p2);
+                divResults.appendChild(div);
+              }              
+             }
+           };
+            xhttp.open("GET", url, true);
+            xhttp.send();
+             }
+

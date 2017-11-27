@@ -16,7 +16,7 @@ html
           |  
           |                         
           .panel-body
-            form.form-horizontal(role='form', method='post', action='add_details', onsubmit='return checkblank(this);')
+            form.form-horizontal(role='form', method='post', action='add_details?id=#{results}', onsubmit='return checkblank(this);')
               #signupalert.alert.alert-danger(style='display:none')
                p Error:
                |                                     

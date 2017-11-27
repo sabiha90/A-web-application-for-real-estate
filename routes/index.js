@@ -3,9 +3,12 @@ var router = express.Router();
 var fs = require('fs');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('search', { title: 'Search bar' });
+  res.render('homepage', { title: 'Search bar' });
 });
 
+router.get('/homepage', function(req, res, next) {
+  res.render('homepage', { title: 'Search bar' });
+});
 
 /*router.get('/', function(req, res, next) {
   res.render('home', { title: 'About me' });
@@ -18,7 +21,10 @@ router.get('/index', function(req,res,next){
 router.get('/risha', function(req,res,next){
   res.render('risha',{ title: 'Risha'});
 });
-
+router.get('/message', function(req, res){
+    var message = '';
+  res.render('message',{message: message});
+});
 router.get('/jeremy', function(req,res,next){
   res.render('jeremy',{ title: 'jeremy'});
 });
@@ -40,8 +46,11 @@ router.get('/search', function(req, res, next) {
 });
 
 router.get('/add_details', function(req, res, next) {
-  var message = '';
-  res.render('add_details', { message:message });
+  var id = req.query.id;
+  var results = '';
+
+  res.render('add_details', { "results":id });
+  console.log(results);
 });
 
 
@@ -54,10 +63,16 @@ router.get('/signup', function(req, res){
     var message = '';
   res.render('signup',{message: message});
 });
+ 
 
-//router.get('/profile', function(req, res, next) {
- // res.render('profile', { title: 'About me' });
-//});
+router.get('/header', function(req, res, next) {
+  res.render('header', { title: ' Header' });
+});
+
+router.get('/footer', function(req, res, next) {
+  res.render('footer', { title: 'footer' });
+});
+
 
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
@@ -103,15 +118,20 @@ router.post('/signup', function(req, res){
 });
 });
 
-router.post('/login', function(req,res){
+
+router.post('/loginUser', function(req,res){
+ console.log("Inside login");
+console.log("Password: " +req.body.password);
   var user_name= req.body.user_name;
   var password = req.body.password;
   var sess = req.session;
+console.log("Session: "+sess);
   var person;
   connection.query('SELECT * FROM users WHERE user_name = ?',user_name, function (error, results, fields) {
   console.log('this.sql', this.sql);
   if(error)
   {
+	console.log(">>>>>>>>>>>>>>>>>>>>>>>> Test If error");
     res.send({
       "code":400,
       "failed":"error ocurred"
@@ -122,7 +142,11 @@ router.post('/login', function(req,res){
     if(results.length >0){
       if(results[0].password == password)
       {
-        sess.response = "Account Matches"
+	console.log(">>>>>>>>>>>>>>>>>>>>>>>> Test If not an error");
+        //res.send({
+         // "code":204,
+         // "success":"Username and password matches"
+          //  });
         res.render('profile',{"person": results});
         
       }
@@ -145,6 +169,16 @@ router.post('/login', function(req,res){
  
   });
 });
+
+
+
+
+
+
+
+
+
+
 
 router.post('/search', function(req, res)
 {
@@ -245,7 +279,8 @@ router.post('/add_details', function(req, res){
       "state": req.body.state,
       "country": req.body.country,
       "price": req.body.price,
-      "image": req.body.image
+      "image": req.body.image,
+      "user_id": req.query.id
     }
 //console.log(req.file.image.name);
  
@@ -266,6 +301,134 @@ router.post('/add_details', function(req, res){
   }
 });
 });
+
+router.get('/home_search_results', function(req,res){
+  var id = req.query.id;
+  connection.query("SELECT * FROM `property_details` WHERE `id`= ?", id, function (error, results, fields) {
+  console.log('this.sql',this.sql);    
+        if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          res.render('home_search_results',{"rows":results});
+        }
+        
+      });
+});
+
+
+router.post('/message', function(req,res){
+  console.log(req.body.bname);
+  var message = {
+  "bname": req.body.bname,
+  "bemail": req.body.bemail,
+  "vphone": req.body.vphone,
+  "messages": req.body.messages,
+  "listing_ID": req.query.id
+};
+ 
+  console.log(message);
+  connection.query('INSERT INTO `message_tab` SET ?',message, function (error, results, fields) {
+  console.log('this.sql', this.sql);
+  if (error) {
+    console.log("error ocurred",error);
+    res.send({
+      "code":400,
+      "failed":"error ocurred"
+    })
+  }else{
+    console.log('The solution is: ', results);
+    res.send({
+      "code":200,
+      "success":"Your message has been sent"
+        });
+  }
+});
+});
+
+router.get('/message_details', function(req,res){
+  var id = req.query.id;
+  connection.query('select m.messages,m.bname,m.bemail,m.vphone from message_tab m JOIN property_details p ON m.listing_ID = p.id JOIN users u ON p.user_id = u.id WHERE p.user_id = ? ', id, function (message_error, message_results, message_fields){
+  console.log('this.sql',this.sql);    
+        if(message_error)
+          {
+            console.log("error ocurred",message_error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          res.render('message_details',{"rows":message_results});
+        }
+        
+      });
+});
+router.get('/sort', function(req,res){
+  var val = req.query.q;
+  var city = req.query.city;
+  if (val=='price')
+  {
+    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY price ASC ", city, function (error, results, fields) {
+    console.log('this.sql',this.sql); 
+    if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          //res.render('search_results',{"rows":results});
+          res.send({"rows":results});
+        }
+  });   
+  
+  }
+
+  if (val=='number_of_bedrooms')
+  {
+    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY number_of_bedrooms ASC ", city, function (error, results, fields) {
+    console.log('this.sql',this.sql); 
+    if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          res.send({"rows":results});
+        }
+  });
+  }
+  if (val=='square_size')
+  {
+    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY square_size ASC ", city, function (error, results, fields) {
+    console.log('this.sql',this.sql); 
+    if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          res.send({"rows":results});
+        }
+  });
+  }      
+});
+
+
 
 
 
