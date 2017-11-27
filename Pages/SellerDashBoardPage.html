@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<!--Load Header and Footer-->
+	<script>
+		
+		$(function() {
+			$("#header").load("Header.html");
+			$("#footer").load("Footer.html");
+		});
+
+	</script>
+	
+	<script>
+		$(document).ready(function(){
+			
+			//Header
+			$("#dashboard").append("<tr class='header'> <th style='width:5px;'> </th> <th style='width:5px;'> </th> <th style='width:70%;'>Address</th> <th style='width:40%;'>ZipCode</th> <th style='width:10%;'>Price</th> </tr>");
+			
+			//General Items
+			for(var i = 0; i < 10; i++) {
+				$("#dashboard").append("<tr> <td> <a href='http://google.com'> <button id='editButton' type='button' class='btn btn-default btn-sm'>  <span class='glyphicon glyphicon-pencil'></span> </button> </a> </td> <td><button id='deleteButton' type='button' class='btn btn-default btn-sm'>  <span class='glyphicon glyphicon-minus'></span> </button> </td> <td>San Francisco Street 1325 </td> <td>99999</td> <td>$500000</td> </tr>");
+			}
+			
+			for(var i = 0; i < 10; i++) {
+				$("#dashboard").append("<tr> <td> <a href='http://google.com'> <button id='editButton' type='button' class='btn btn-default btn-sm'>  <span class='glyphicon glyphicon-pencil'></span> </button> </a> </td> <td><button id='deleteButton' type='button' class='btn btn-default btn-sm'>  <span class='glyphicon glyphicon-minus'></span> </button> </td> <td>SomeWhere in the world 1325 </td> <td>00000</td> <td>$0</td> </tr>");
+			}
+		
+		});
+		
+	</script>
+	
+	<style> 
+	
+	* {
+	  box-sizing: border-box;
+	}
+	
+	#dashboard {
+	  border-collapse: collapse;
+	  width: 100%;
+	  border: 1px solid #ddd;
+	  font-size: 18px;
+	}
+
+	#dashboard th, #dashboard td {
+	  text-align: left;
+	  padding: 12px;
+	}
+
+	#dashboard tr {
+	  border-bottom: 1px solid #ddd;
+	}
+ 
+	#dashboard tr.header, #dashboard tr:hover {
+	  background-color: #f1f1f1;
+	}
+	
+	#background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		opacity: 0.1;
+		filter:alpha(opacity=40);
+	}
+	
+	.panel-body {
+		
+		padding-top: 30px;
+	}
+	
+	#lineimage {
+		position: relative;
+		width: 50%;
+		height: 5px;
+	}
+	
+	#addButton {
+		float: right;
+		margin: 1%;
+	}
+	
+	#deleteButton {
+		margin: 1%;
+	}
+	
+	#deleteButton:hover  {
+		background-color: red;
+	}
+	
+	#addButton:hover, #editButton:hover {
+		background-color: lightblue;
+	}
+	
+	#editButton {
+		margin: 1%;
+	}
+	
+	
+	
+	#myInput {
+	  background-position: 10px 10px;
+	  background-repeat: no-repeat;
+	  width: 100%;
+	  font-size: 16px;
+	  padding: 12px 20px 12px 40px;
+	  border: 1px solid #ddd;
+	  margin-bottom: 12px;
+	}
+	
+	</style>
+	
+	<title>RECycle</title>
+	
+	
+	</head>
+	<body>
+
+		<!--Background-->
+		<div id="background"></div>
+		
+		<!--Header-->
+		<div id="header"> </div>
+
+		<!--SearchResult Text-->
+		<h4>Your Selling Houses...</h4>
+		
+		<!--ArrowLine Image-->
+		<img id="lineimage" src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Flowchart_Line.svg/1280px-Flowchart_Line.svg.png'>
+		<br>
+		
+		<div class="container">
+			
+			<div class="row">
+				<a href='http://google.com'> <button id="addButton" type="button" class="btn btn-default btn-sm"> 
+				  <span class="glyphicon glyphicon-plus"></span> </button> </a>
+			</div>
+		
+			<div class = "panel panel-primary">
+			   <div class = "panel-heading">
+				  <h3 class = "panel-title">DashBoard</h3>
+			   </div>
+			   
+			   <div class = "panel-body">
+			   
+				  <table id="dashboard">
+				  
+				  </table>
+				  
+				  </div>
+				  
+			   </div>
+			</div>
+		
+		</div>
+		
+		<script>
+			function myFunction() {
+			  var input, filter, table, tr, td, i;
+			  input = document.getElementById("myInput");
+			  filter = input.value.toUpperCase();
+			  table = document.getElementById("dashboard");
+			  tr = table.getElementsByTagName("tr");
+			  for (i = 0; i < tr.length; i++) {
+				td = tr[i].getElementsByTagName("td")[0];
+				if (td) {
+				  if (td.innerHTML.toUpperCase().indexOf(filter) > -1) {
+					tr[i].style.display = "";
+				  } else {
+					tr[i].style.display = "none";
+				  }
+				}       
+			  }
+			}
+		</script>
+		
+		<!--Footer-->
+		<div id="footer"> </div>
+		
+	</body>
+</html>

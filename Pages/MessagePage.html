@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<!--Load Header and Footer-->
+	<script>
+		
+		$(function() {
+			$("#header").load("Header.html");
+			$("#footer").load("Footer.html");
+		});
+
+	</script>
+	
+	<script>
+		$(document).ready(function(){
+			
+			//Header
+			$("#NewMails").append("<tr class='header'>  <th style='width:5px;'> </th> <th style='width:20%;'>From</th> <th style='width:70%;'>Subject</th> <th style='width:20%;'>Date</th> </tr>");
+			$("#SentMails").append("<tr class='header'>  <th style='width:5px;'> </th> <th style='width:20%;'>From</th> <th style='width:70%;'>Subject</th> <th style='width:20%;'>Date</th> </tr>");
+			$("#DeletedMails").append("<tr class='header'>  <th style='width:5px;'> </th> <th style='width:20%;'>From</th> <th style='width:70%;'>Subject</th> <th style='width:20%;'>Date</th> </tr>");
+			
+			//New Mails
+			for(var i = 0; i < 10; i++) {
+			$("#NewMails").append("<tr>" +
+										"<td><button id='deleteButton' type='button' class='btn btn-default btn-sm'>  <span class='glyphicon glyphicon-minus'></span> </button> </td>" +
+										"<td>Someone</td>" +
+										"<td>Hello, I am ........................................................</td>" +
+										"<td>11/21/17</td>" +
+									"</tr>");
+			}
+			
+			//Sent Mails
+			for(var i = 0; i < 10; i++) {
+			$("#SentMails").append("<tr>" +
+											"<td><button id='deleteButton' type='button' class='btn btn-default btn-sm'>  <span class='glyphicon glyphicon-minus'></span> </button> </td>" +
+											"<td>Someone</td>" +
+											"<td>Hey, What sup!!!!!!!</td>" +
+											"<td>11/21/17</td>" +
+										"</tr>");
+				
+			}
+			
+			//Deleted Mails
+			for(var i = 0; i < 10; i++) {
+			$("#DeletedMails").append("<tr>" +
+										"<td><button id='deleteButton' type='button' class='btn btn-default btn-sm'>  <span class='glyphicon glyphicon-minus'></span> </button> </td>" +
+										"<td>Someone</td>" +
+										"<td>OPS!" +
+										"<td>11/21/17</td>" +
+									"</tr>");
+			}
+		
+			
+		});
+		
+	</script>
+	
+	<style> 
+	#background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		opacity: 0.2;
+		filter:alpha(opacity=40);
+		z-index: -1;
+	}
+	
+	* {
+	  box-sizing: border-box;
+	}
+	
+	.dashboard {
+	  border-collapse: collapse;
+	  width: 100%;
+	  border: 1px solid #ddd;
+	  font-size: 18px;
+	}
+
+	.dashboard th, .dashboard td {
+	  text-align: left;
+	  padding: 12px;
+	}
+
+	.dashboard tr {
+	  border-bottom: 1px solid #ddd;
+	}
+ 
+	.dashboard tr.header, .dashboard tr:hover {
+	  background-color: #f1f1f1;
+	}
+	
+	.background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		opacity: 0.1;
+		filter:alpha(opacity=40);
+	}
+	
+	.panel-body {
+		
+		padding-top: 30px;
+	}
+	
+	#deleteButton {
+		margin: 1%;
+	}
+	
+	#deleteButton:hover  {
+		background-color: red;
+	}
+	
+
+	</style>
+	
+	<title>RECycle</title>
+	
+	
+	</head>
+	<body>
+
+		<!--Background-->
+		<div id="background"></div>
+		
+		<!--Header-->
+		<div id="header"> </div>
+
+		
+		<div class="container-fluid">
+			<ul class="nav nav-pills nav-stacked col-md-2">
+			  <li class="active"><a href="#tab_a" data-toggle="pill">Send a mail</a></li>
+			  <li><a href="#tab_b" data-toggle="pill">New Mail</a></li>
+			  <li><a href="#tab_c" data-toggle="pill">Sent</a></li>
+			  <li><a href="#tab_d" data-toggle="pill">Deleted</a></li>
+			</ul>
+			<div class="tab-content col-md-10">
+				
+				<!--Send Mail Tab-->
+				<div class="tab-pane active" id="tab_a">
+					<div style="width: 60%;" class = "panel panel-primary">
+					   <div class = "panel-heading">
+						  <h3 class = "panel-title">Send a mail</h3>
+					   </div>
+					   <div class = "panel-body">
+						  <div class="form-group">
+							<label for="subject">Subject:</label>
+							<input style="width: 80%;" type="text" class="form-control" id="subject">
+							<form>
+								<div class="form-group">
+								<label for="message">Message:</label>
+								<textarea style="width: 80%;" class="form-control" rows="5" id="message"></textarea>
+								</div>
+							</form>
+						</div>
+					   </div>
+					</div>
+				</div>
+				
+				<!--New Mail Tab-->
+				<div class="tab-pane" id="tab_b">
+					<div class="tab-pane active" id="tab_a">
+						<div style="width: 60%;" class = "panel panel-primary">
+						   <div class = "panel-heading">
+							  <h3 class = "panel-title">New Mail</h3>
+						   </div>
+						   <div class = "panel-body">
+							  <div class="form-group">
+								<table id="NewMails" class="dashboard"> </table>
+							</div>
+						   </div>
+						</div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab_c">
+					<div style="width: 60%;" class = "panel panel-primary">
+					   <div class = "panel-heading">
+						  <h3 class = "panel-title">Sent</h3>
+					   </div>
+					   <div class = "panel-body">
+						  <div class="form-group">
+							<table id="SentMails" class="dashboard"> </table>
+						</div>
+					   </div>
+					</div>
+				</div>
+				<div class="tab-pane" id="tab_d">
+					 <div style="width: 60%;" class = "panel panel-primary">
+					   <div class = "panel-heading">
+						  <h3 class = "panel-title">Sent</h3>
+					   </div>
+					   <div class = "panel-body">
+						  <div class="form-group">
+							<table id="DeletedMails" class="dashboard"> </table>
+						</div>
+					   </div>
+					</div>
+				</div>
+			</div><!-- tab content -->
+		</div><!-- end of container -->
+				
+		<!--Footer-->
+		<div id="footer"> </div>
+		
+	</body>
+</html>

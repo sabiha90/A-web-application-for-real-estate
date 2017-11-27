@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html>
+	<head>
+
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script src="https://code.jquery.com/jquery-3.2.1.js" integrity="sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=" crossorigin="anonymous"></script>
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+	
+	<!--Load Header and Footer-->
+	<script>
+		
+		$(function() {
+			$("#header").load("Header.html");
+			$("#footer").load("Footer.html");
+		});
+
+	</script>
+	
+	<script>
+		$(document).ready(function(){
+			
+			//Feature Items
+			$("#searchResult").append("<div id='featureBox'>" +
+											"<a href='#'>" +
+												"<p class='pricetag overlay'>$10 Billion</p>" +
+												"<img id='featureImage' src='http://tinyhousetalk.com/wp-content/uploads/Handcrafted-Movement-Tiny-House-001.jpg'>" + 
+											" </a>" +
+											"<p class='text-center'>Here is the Address </p>" +
+										"</div>");
+			
+			//General Items
+			for(var i = 0; i < 30; i++) {
+				$("#searchResult").append("<div class='normalBox'> <a href='#'> <p class='pricetag overlay'>$10 Billion</p> <img class='normalImage' src='http://ukrevival.net/files/2014/07/house.jpg'> </a> <p class='text-center'>Here is the Address </p> </div>");
+			}
+		
+		});
+		
+		
+		
+	</script>
+	
+	
+	<title>RECycle</title>
+	
+	<style> 
+	
+	.pricetag {
+		text-align: center;
+		color: white;
+	}
+	
+	#featureBox {
+		position: relative;
+		display: inline-block;
+		width: 500px;
+		height: 300px;
+		background-color: white;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		margin: 10px;
+	}
+	
+	#featureBox:hover {
+		-webkit-filter: drop-shadow(8px 8px 10px black);
+		filter: drop-shadow(8px 8px 10px black);
+	}
+	
+	#featureBox:hover .overlay {
+		bottom: 80%;
+		height: 20%;
+	}
+	
+	#featureImage {
+		width: 500px;
+		height: 250px;
+	}
+	
+	.normalBox {
+		position: relative;
+		display: inline-block;
+		width: 250px;
+		height: 300px;
+		background-color: white;
+		box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+		margin: 10px;
+	}
+	
+	.normalBox:hover {
+		-webkit-filter: drop-shadow(8px 8px 10px black);
+		filter: drop-shadow(8px 8px 10px black);
+	}
+	
+	.normalBox:hover .overlay {
+		bottom: 80%;
+		height: 20%;
+	}
+	
+	.normalImage {
+		width: 250px;
+		height: 250px;
+	}
+	
+	.overlay {
+	  position: absolute;
+	  bottom: 100%;
+	  top: 0;
+	  left: 80%;
+	  right: 0;
+	  background-color: #008CBA;
+	  overflow: hidden;
+	  width: 20%;
+	  height:0;
+	  opacity: 0.6;
+	  transition: .5s ease;
+	}
+	
+	body {
+		position: relative;
+		opacity: 0.8;
+	}
+	
+	.panel {
+		width: 100%
+	}
+	
+	#background {
+		position: fixed;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		background-image: url('https://upload.wikimedia.org/wikipedia/commons/6/6b/A._S._Bradford_House.JPG');
+		background-repeat: no-repeat;
+		background-attachment: fixed;
+		background-size: cover;
+		opacity: 0.2;
+		filter:alpha(opacity=40);
+	}
+	
+	#lineimage {
+		position: relative;
+		width: 50%;
+		height: 5px;
+	}
+	
+	.container-fluid {
+		position: relative;
+		display: inline-block;
+	}
+	
+	
+	</style>
+	
+	</head>
+	<body>
+
+		<!--Background-->
+		<div id="background"></div>
+		
+		<!--Header-->
+		<div id="header"> </div>
+		
+		<!--SearchResult Text-->
+		<h4>Search Result...</h4>
+		
+		<!--ArrowLine Image-->
+		<img id="lineimage" src = 'https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Flowchart_Line.svg/1280px-Flowchart_Line.svg.png'>
+		<br>
+		
+		<!--SearchResult Content-->
+		<div class="container-fluid">
+			
+			<div class = "row"><br>
+				<!--Filter Panel-->
+				<div class="col-xs-6 col-sm-3 col-md-3">
+					<div class = "panel panel-primary">
+					   <div class = "panel-heading">
+							<h3 class = "panel-title">Filter</h3>
+					   </div>
+					   <div class = "panel-body">
+							<div class="w3-bar-item">
+								<!--CheckBox Button-->
+								<input type="checkbox" name="Highest price">&nbsp Highest Price<br>
+								<input type="checkbox" name="Lowest price">&nbsp Lowest Price<br>
+								<input type="checkbox" name="square_size">&nbsp Square feet<br>
+								<input type="checkbox" name="square_size">&nbsp Highest Rating<br>
+								<input type="checkbox" name="square_size">&nbsp Lowest Rating<br>
+							</div>
+					   </div>
+					</div>
+				</div>
+				
+				<!--SearchResult Items-->				
+				<div class="col-xs-9 col-sm-9 col-md-9">
+					<div class="container">
+						<div id="searchResult"></div>
+					</div>
+				</div>
+			</div>
+			
+		</div>
+		
+		<!--Footer-->
+		<div id="footer"> </div>
+		
+	</body>
+</html>
