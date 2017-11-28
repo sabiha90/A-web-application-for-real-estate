@@ -225,7 +225,7 @@ html
               h1(style='margin:0px;')
                 span.largenav RECycle
             .col-sm-7.col-md-7
-             form.navbar-form(role='form', method='post',action='search')
+             form.navbar-form(role='form', method='post',action='search_results', onsubmit="return validateForm()")
               select.selectpicker.form-control( name="selectpicker",id ="zip",data-style='btn-danger')
                   option(value='none') Select
                  
@@ -240,6 +240,14 @@ html
                  button.btn.btn-default(type='submit')
                   i.glyphicon.glyphicon-search
                 script.
+                  function validateForm() {
+                    var x = document.getElementById("search_input").value;
+                    console.log(x);
+                    if (x == "") {
+                      alert("Value must be filled out");
+                      return false;
+                    }
+                   }
                   var sel = document.getElementById("zip");
                   var tex = document.getElementById("search_input");
                   sel.addEventListener("change", function() {
@@ -247,6 +255,7 @@ html
                   {
                   tex.setAttribute("placeholder","Eg.94536");
                   tex.setAttribute("name","zipcode");
+                  tex.setAttribute("onkeypress","allnumeric(tex.value)");
                   }
                   else if(sel.value == 'city')
                   {
@@ -263,6 +272,15 @@ html
                   tex.setAttribute("placeholder","Search for a Property");
                   }
                   });
+                  function allnumeric(inputtxt)
+                   {
+                     var numbers = /^[0-9]+$/;
+                     if(!inputtxt.match(numbers))
+                     {
+                       alert('Please input numeric characters only');
+                       
+                      }
+                      } 
       #mySidenav.sidenav
         .container(style='background-color: #2874f0; padding-top: 10px;')
           span.sidenav-heading Home

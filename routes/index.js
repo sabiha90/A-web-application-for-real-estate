@@ -175,7 +175,7 @@ console.log("Session: "+sess);
 
 
 
-router.post('/search', function(req, res)
+router.post('/search_results', function(req, res)
 {
 
   var rows;
