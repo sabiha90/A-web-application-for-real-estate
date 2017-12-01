@@ -193,7 +193,7 @@ html
           .row.row1
             ul.largenav.pull-right
               li.upper-links
-                a.links(href='homepage') Home
+                a.links(href='home') About
               li.upper-links
                 a.links(href='login') Login
               li.upper-links
@@ -255,7 +255,6 @@ html
                   {
                   tex.setAttribute("placeholder","Eg.94536");
                   tex.setAttribute("name","zipcode");
-                  tex.setAttribute("onkeypress","allnumeric(tex.value)");
                   }
                   else if(sel.value == 'city')
                   {
@@ -272,15 +271,6 @@ html
                   tex.setAttribute("placeholder","Search for a Property");
                   }
                   });
-                  function allnumeric(inputtxt)
-                   {
-                     var numbers = /^[0-9]+$/;
-                     if(!inputtxt.match(numbers))
-                     {
-                       alert('Please input numeric characters only');
-                       
-                      }
-                      } 
       #mySidenav.sidenav
         .container(style='background-color: #2874f0; padding-top: 10px;')
           span.sidenav-heading Home
