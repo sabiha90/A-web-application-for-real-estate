@@ -22,6 +22,9 @@ html
       #flipkart-navbar {
       background-color: #2874f0;
       color: #FFFFFF;
+      position: fixed;
+      z-index: 1;
+      width: 1200px;
       }
       .row1{
       padding-top: 10px;
@@ -45,45 +48,7 @@ html
       height: 43px;
       cursor: pointer;
       }
-      .cart-button {
-      background-color: #2469d9;
-      box-shadow: 0 2px 4px 0 rgba(0, 0, 0, .23), inset 1px 1px 0 0 hsla(0, 0%, 100%, .2);
-      padding: 10px 0;
-      text-align: center;
-      height: 41px;
-      border-radius: 2px;
-      font-weight: 500;
-      width: 120px;
-      display: inline-block;
-      color: #FFFFFF;
-      text-decoration: none;
-      color: inherit;
-      border: none;
-      outline: none;
-      }
-      .cart-button:hover{
-      text-decoration: none;
-      color: #fff;
-      cursor: pointer;
-      }
-      .cart-svg {
-      display: inline-block;
-      width: 16px;
-      height: 16px;
-      vertical-align: middle;
-      margin-right: 8px;
-      }
-      .item-number {
-      border-radius: 3px;
-      background-color: rgba(0, 0, 0, .1);
-      height: 20px;
-      padding: 3px 6px;
-      font-weight: 500;
-      display: inline-block;
-      color: #fff;
-      line-height: 12px;
-      margin-left: 10px;
-      }
+     
       .upper-links {
       display: inline-block;
       padding: 0 11px;
@@ -93,7 +58,7 @@ html
       color: inherit;
       border: none;
       outline: none;
-      font-size: 12px;
+      font-size: 15px;
       }
       .dropdown {
       position: relative;
@@ -122,7 +87,8 @@ html
       text-decoration: none;
       }
       .links:hover {
-      color: #fff;
+      font-size: 20px;
+      color: white;
       text-decoration: none;
       }
       .profile-links {
@@ -241,10 +207,12 @@ html
             .col-sm-3
               h2(style='margin:0px;')
                 span.smallnav.menu(onclick='openNav()') ☰ RECycle
+
               h1(style='margin:0px;')
                 span.largenav RECycle
+
             .col-sm-7.col-md-7
-             form.navbar-form(role='form', method='post',action='search')
+             form.navbar-form(role='form', method='post',action='search',onsubmit="return validateForm()")
               select.selectpicker.form-control( name="selectpicker",id ="zip",data-style='btn-danger')
                   option(value='none') Select
                  
@@ -255,22 +223,34 @@ html
                   option(value='street') Street Name
                span#search.search_disp
                   input.form-control(type='text', placeholder='Search', id="search_input")
-              form(role='form',method='post',action='search')
+              form(name = "myform",role='form',method='post',action='search')
                  button.btn.btn-default(type='submit')
                   i.glyphicon.glyphicon-search
                 script.
+                  function validateForm() {
+                    var x = document.getElementById("search_input").value;
+                    console.log(x);
+                    if (x == "") {
+                      alert("Name must be filled out");
+                      return false;
+                    }
+                   }
                   var sel = document.getElementById("zip");
                   var tex = document.getElementById("search_input");
+
                   sel.addEventListener("change", function() {
                   if(sel.value == 'zipcode')
                   {
                   tex.setAttribute("placeholder","Eg.94536");
                   tex.setAttribute("name","zipcode");
+                  
                   }
                   else if(sel.value == 'city')
                   {
                   tex.setAttribute("placeholder","San Francisco");
                   tex.setAttribute("name","city");
+                  console.log(tex.value);
+                  
                   }
                   else if (sel.value == 'street')
                   {
@@ -282,6 +262,17 @@ html
                   tex.setAttribute("placeholder","Search for a Property");
                   }
                   });
+                  function allnumeric(inputtxt)
+                   {
+                     var numbers = /^[0-9]+$\s/;
+                     if(!inputtxt.match(numbers))
+                     
+                     {
+                       alert('Please input numeric characters only');
+                       
+                       return false;
+                      }
+                      } 
       #mySidenav.sidenav
         .container(style='background-color: #2874f0; padding-top: 10px;')
           span.sidenav-heading Home
@@ -294,3 +285,5 @@ html
         a.profile-links(href='http://clashhacks.in/') Link
         | <
         a.profile-links(href='http://clashhacks.in/') Sign Out
+
+

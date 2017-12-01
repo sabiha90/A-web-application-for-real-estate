@@ -3,9 +3,6 @@ html
   head
     title= title
     
-    link(rel="shortcut icon" href="/images/sfsu.jpg" type="image/jpg")
-    meta(charset='utf-8')
-    | &#x9;
     meta(name='viewport', content='width=device-width, initial-scale=1')
     | &#x9;
     script(src='https://code.jquery.com/jquery-3.2.1.js', integrity='sha256-DZAnKJ/6XZ9si04Hgrsxu/8s717jcIzLy3oi35EouyE=', crossorigin='anonymous')
@@ -16,13 +13,14 @@ html
     | &#x9;
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
     | &#x9;
-    
+    script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
+    | &#x9;
     link(rel='stylesheet', href='//maxcdn.bootstrapcdn.com/bootstrap/3.3.1/css/bootstrap.min.css')
     |     
     // Load Header and Footer
     script.
       $(function() {
-      $("#header").load("/header");
+      $("#header").load("/header1");
       $("#footer").load("/footer");
       });
     | &#x9;
@@ -39,7 +37,7 @@ html
       float: right;
 
       }    
-      ul{list-style-type:none; }
+      
       #background {
       position: fixed;
       top: 0;
@@ -52,6 +50,7 @@ html
       background-size: cover;
       opacity: 0.2;
       filter:alpha(opacity=40);
+      z-index: -1;
       }
     | &#x9;
     | &#x9;
@@ -60,7 +59,8 @@ html
 
 
   body
-   
+
+    #background
     #header
     
       

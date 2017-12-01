@@ -1,4 +1,5 @@
 var express = require('express');
+var passwordHash = require('password-hash');
 
 var router = express.Router();
 var fs = require('fs');
@@ -74,7 +75,7 @@ router.post('/signup', function(req, res){
     
     var users = {
       "user_name": req.body.user_name,
-      "password": req.body.password,
+      "password": passwordHash.generate(req.body.password),
       "first_name": req.body.first_name,
       "last_name": req.body.last_name,
       "mob_no":  req.body.mob_no
@@ -277,7 +278,7 @@ router.post('/search', function(req, res)
     console.log('this.sql', results.length);
     if(results.length == 0)
     {
-       res.render('search_results',{"rows": "Sorry Not FOund!"});
+       res.send({"rows": "Sorry Not FOund!"});
     //res.send({
      // "code":400,
       //"failed":"error ocurred"
@@ -445,7 +446,24 @@ router.get('/sort', function(req,res){
   }      
 });
 
-
+router.get('/homepage_details', function(req,res){
+  var id = req.query.id;
+  connection.query('select * from property_details  ', function (message_error, message_results, message_fields){
+  console.log('this.sql',this.sql);    
+        if(message_error)
+          {
+            console.log("error ocurred",message_error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          res.render('homepage',{"rows":message_results});
+        }
+        
+      });
+});
 
 
    
