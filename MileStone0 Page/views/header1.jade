@@ -242,9 +242,9 @@ html
                   sel.addEventListener("change", function() {
                   if(sel.value == 'zipcode')
                   {
-                  tex.setAttribute("placeholder","Eg.94536");
-                  tex.setAttribute("name","zipcode");
-                  tex.setAttribute("onkeyup","allnumeric(tex.value);")
+                    tex.setAttribute("placeholder","Eg.94536");
+                    tex.setAttribute("name","zipcode");
+                    tex.setAttribute("onkeyup","allnumeric(tex.value);")
                   
                   }
                   else if(sel.value == 'city')
@@ -267,6 +267,10 @@ html
                   function allnumeric(inputtxt)
                    {
                      var numbers = /^[0-9]*$/;
+                     if (inputtxt == "")
+                      {
+                        return;
+                      }
 
                      if(!inputtxt.match(numbers))
                      
@@ -275,11 +279,19 @@ html
                        
                      
                       }
+                     if (inputtxt.length > 5)
+                     {
+                        alert('Please input a zipcode of 5 characters')
+                     }
                     }
 
                     function alltext(inputtxt)
                     {
                       var letters = /^[A-Za-z]+$/;
+                      if (inputtxt == "")
+                      {
+                        return;
+                      }
                       if(!inputtxt.match(letters))
                      
                      {

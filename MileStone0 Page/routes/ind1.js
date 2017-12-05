@@ -239,7 +239,7 @@ router.post('/search', function(req, res)
     console.log('this.sql', results.length);
     if(results.length == 0)
     {
-       res.render('search_results',{"rows": "Sorry Not FOund!"});
+       res.send({"rows": "Sorry Not FOund!"});
     //res.send({
      // "code":400,
       //"failed":"error ocurred"
@@ -266,12 +266,12 @@ router.post('/search', function(req, res)
 
  if(city)
   {
-     connection.query("SELECT * FROM `property_details` WHERE `city` LIKE ? ", '%' + city + '%', function (error, results, fields) {
+    connection.query("SELECT * FROM `property_details` WHERE `city` LIKE ? ", '%' + city + '%', function (error, results, fields) {
     console.log('this.sql', this.sql);
     console.log('this.sql', results.length);
     if(results.length == 0)
     {
-       res.render('search_results',{"rows": "Sorry Not FOund!"});
+       res.send({"rows": "Sorry Not FOund!"});
     //res.send({
      // "code":400,
       //"failed":"error ocurred"
