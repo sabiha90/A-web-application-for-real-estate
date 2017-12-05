@@ -225,7 +225,7 @@ router.post('/search_results', function(req, res)
  // }
   if(results.length == 0)
   {
-    res.render('search_results',{"rows": "Sorry Not Found!"});
+    res.send({"rows": "Sorry Not FOund!"});
   }
   else if(results.length<6)
   {
@@ -250,7 +250,7 @@ if(city)
  // }
   if(results.length == 0)
   {
-    res.render('search_results',{"rows": "Sorry Not Found!"});
+    res.send({"rows":"Sorry Not Found!"});
   }
   else if(results.length<6)
   {
@@ -274,7 +274,7 @@ if(street)
  // }
   if(results.length == 0)
   {
-    res.render('search_results',{"rows": "Sorry Not Found!"});
+    res.send({"rows":"Sorry Not Found!"});
   }
   else if(results.length<6)
   {
