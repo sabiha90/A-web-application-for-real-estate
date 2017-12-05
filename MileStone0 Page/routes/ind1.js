@@ -4,9 +4,28 @@ var passwordHash = require('password-hash');
 var router = express.Router();
 var fs = require('fs');
 
+
+
 router.get('/homepage', function(req, res, next) {
-  res.render('homepage', { title: 'Search bar' });
+  console.log(req.session.id);
+  connection.query('select * from property_details LIMIT 3', function (error, results, fields){
+  console.log('this.sql',this.sql);    
+  if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          });
+        }
+        else{
+          res.render('homepage',{"rows":results});
+        }
+        
 });
+        
+});
+
 router.get('/search', function(req, res, next) {
   res.render('search', { title: 'Search bar' });
 });
@@ -55,6 +74,7 @@ router.get('/seller_header', function(req, res, next) {
   res.render('seller_header', { title: 'Search bar' });
 });
 
+
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -101,10 +121,12 @@ router.post('/signup', function(req, res){
 });
 
 router.post('/login', function(req,res){
-  var user_name= req.body.user_name;
-  var password = req.body.password;
-  var sess = req.session;
-  var person;
+  req.session.user_name = req.body.user_name;
+  req.session.password = req.body.password;
+  var user_name = req.session.user_name;
+  var password = req.session.password;
+  
+
   connection.query('SELECT * FROM users WHERE user_name = ?',user_name, function (error, results, fields) {
   console.log('this.sql', this.sql);
   if(error)
@@ -119,8 +141,12 @@ router.post('/login', function(req,res){
     if(results.length >0){
       if(results[0].password == password)
       {
-        sess.response = "Account Matches"
-        res.render('profile',{"person": results});
+        
+        //console.log(results[0].user_name);
+        req.session.results = results
+        console.log('session',req.session.id);
+       
+        res.render('profile',{"person": req.session.results});
         
       }
       else{

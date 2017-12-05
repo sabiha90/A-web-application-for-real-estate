@@ -269,11 +269,13 @@ html
       br
       br
       // Top 6 Newest House
+    
       #NewHouses.row
         
+     - each item in rows
         #NewHouse1.NewHousesBox.col-sm-6.col-md-4
           .MiddleBox
-            a#NewHouse1link(href='#')
+            a#NewHouse1link(href='/home_search_results?id=#{item.id}')
               .text Check It Out
         #NewHouse2.NewHousesBox.col-sm-6.col-md-4
           .MiddleBox

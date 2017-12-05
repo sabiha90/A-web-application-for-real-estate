@@ -1,5 +1,6 @@
 var express = require('express');
 var router = express.Router();
+var passwordHash = require('password-hash');
 
 /* GET home page. */
 
