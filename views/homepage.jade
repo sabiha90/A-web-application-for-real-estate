@@ -69,15 +69,17 @@ html
       position: relative;
       padding: 0px;
       margin-bottom: 20px;
+      align: center;
       }
       .thumbnail:hover {
       filter: drop-shadow(8px 8px 10px black);
       }
       .thumbnail img {
-      width: 100%;
+      width: 300px;
       }
       p {
       color:black;
+      margin-left:10px;
       }
     |     
     title RECycle
@@ -97,7 +99,7 @@ html
     // NewHousesSection
    #FeatureSection.container-fluid
      #TitleText
-        h2.text-center(style="font-size: 400%; font-family: 'Helvetica Neue';color:#191970;")  Feature Properties for Sale
+        h2.text-center(style="font-size: 400%; font-family: 'Helvetica Neue';color:#191970;")  Featured Properties for Sale
         br
         br
         // Top 6 Feature House
@@ -106,7 +108,7 @@ html
             .col-xs-18.col-sm-6.col-md-3
                .thumbnail
                  a(href='home_search_results?id=#{item.id}')
-                    img(src='#{item.image}', alt='')
+                    img(src='#{item.image}', style="height:180px;")
                     .text Check It Out
                     .caption
                    p  

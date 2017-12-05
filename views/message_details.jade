@@ -51,6 +51,9 @@ html
       #deleteButton:hover  {
       background-color: red;
       }
+      .content {
+      margin-top: 150px;
+      }
     | &#x9;
     | &#x9;
     title RECycle
@@ -59,71 +62,72 @@ html
     // Background
     #background
     // Header
-    #header  
+    #header
     | &#x9;&#x9;
     .container-fluid
+      .content
      #message 
       ul.nav.nav-pills.nav-stacked.col-md-2
         li.active
-          a(href='#tab_b', data-toggle='pill') New Mail
+          a(href='#tab_a', data-toggle='pill') New Mail
         | &#x9;&#x9;&#x9;  
         li
-          a(href='#tab_a', data-toggle='pill') Send a Mail
-        | &#x9;&#x9;&#x9;  
+          a(href='#tab_b', data-toggle='pill') Send a Message
+      | &#x9;&#x9;&#x9;
       .tab-content.col-md-10
         // Send Mail Tab
         #tab_a.tab-pane.active
-          .panel.panel-primary(style='width: 60%;')
+          .panel.panel-primary(style='width: 100%;')
             .panel-heading
-              h3.panel-title Send a mail
-            | &#x9;&#x9;&#x9;&#x9;&#x9;   
+              h3.panel-title New Mail
+            | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   
             .panel-body
               .form-group
-                label(for='subject') Subject:
-                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
-                input#subject.form-control(style='width: 80%;', type='text')
-                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
-                form
-                  .form-group
-                    label(for='message') Message:
-                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
-                    textarea#message.form-control(style='width: 80%;', rows='5')
-        // New Mail Tab
-        #tab_b.tab-pane
-          #tab_b.tab-pane.active
-            .panel.panel-primary(style='width: 100%;')
-              .panel-heading
-                h3.panel-title New Mail
-              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   
-              .panel-body
-                .form-group
-                  table#NewMails.dashboard
-                    tr.header
-                      th(style='width:40%;') From
-                      |  
-                      th(style='width:50%;') Message
-                      |  
-                      th(style='width:30%;') Phone
-                      
-                      th(style='width:20%;') Date
-                      |  
-                      th(style='width:5px;')  
-                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
-                    tr
-                     - each item in rows
-  
+                table#NewMails.dashboard
+                  tr.header
+                    th(style='width:40%;') From
+                    th(style='width:50%;') Message
+                    |  
+                    th(style='width:30%;') Subject
+                    |  
+                    th(style='width:20%;') Date
+                    |  
+                    th(style='width:5px;')  
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  tr
+                   - each item in rows
+
                       td #{item.bname}
-                      |   
                       | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
-                      td #{item.messages}  
+                      td #{item.messages}
                       | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
                       td #{item.vphone}
                       | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
-                      td 11/21/17
+                      td 11/21/17 
                       | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
                       td
                         button#deleteButton.btn.btn-default.btn-sm(type='button')
                           span.glyphicon.glyphicon-minus
+                
+        // New Mail Tab
+        #tab_b.tab-pane
+          #tab_a.tab-pane.active
+            .panel.panel-primary(style='width: 60%;')
+              .panel-heading
+                h3.panel-title Send a mail
+              | &#x9;&#x9;&#x9;&#x9;&#x9;   
+              .panel-body
+                .form-group
+                  label(for='subject') Subject:
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  input#subject.form-control(style='width: 80%;', type='text')
+                  | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                  form
+                    .form-group
+                      label(for='message') Message:
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      textarea#message.form-control(style='width: 80%;', rows='5')
+            
       // tab content
     // end of container
       // Footer

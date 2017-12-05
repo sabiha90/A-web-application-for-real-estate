@@ -3,7 +3,7 @@ var router = express.Router();
 var fs = require('fs');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  connection.query('select * from property_details LIMIT 3', function (error, results, fields){
+  connection.query('select * from property_details LIMIT 4', function (error, results, fields){
   console.log('this.sql',this.sql);    
   if(error)
           {
@@ -21,7 +21,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/homepage', function(req, res, next) {
-  connection.query('select * from property_details LIMIT 3', function (error, results, fields){
+  connection.query('select * from property_details LIMIT 4', function (error, results, fields){
   console.log('this.sql',this.sql);
   if(error)
           {
