@@ -65,10 +65,10 @@ html
      #message 
       ul.nav.nav-pills.nav-stacked.col-md-2
         li.active
-          a(href='#tab_a', data-toggle='pill') Send a mail
+          a(href='#tab_b', data-toggle='pill') New Mail
         | &#x9;&#x9;&#x9;  
         li
-          a(href='#tab_b', data-toggle='pill') New Mail
+          a(href='#tab_a', data-toggle='pill') Send a Mail
         | &#x9;&#x9;&#x9;  
       .tab-content.col-md-10
         // Send Mail Tab
@@ -90,7 +90,7 @@ html
                     textarea#message.form-control(style='width: 80%;', rows='5')
         // New Mail Tab
         #tab_b.tab-pane
-          #tab_a.tab-pane.active
+          #tab_b.tab-pane.active
             .panel.panel-primary(style='width: 100%;')
               .panel-heading
                 h3.panel-title New Mail
