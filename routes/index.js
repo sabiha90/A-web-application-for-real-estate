@@ -3,11 +3,40 @@ var router = express.Router();
 var fs = require('fs');
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('homepage', { title: 'Search bar' });
+  connection.query('select * from property_details LIMIT 3', function (error, results, fields){
+  console.log('this.sql',this.sql);    
+  if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          });
+        }
+        else{
+          res.render('homepage',{"rows":results});
+        }
+        
+});
 });
 
 router.get('/homepage', function(req, res, next) {
-  res.render('homepage', { title: 'Search bar' });
+  connection.query('select * from property_details LIMIT 3', function (error, results, fields){
+  console.log('this.sql',this.sql);
+  if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          });
+        }
+        else{
+          res.render('homepage',{"rows":results});
+        }
+
+});
+
 });
 
 /*router.get('/', function(req, res, next) {

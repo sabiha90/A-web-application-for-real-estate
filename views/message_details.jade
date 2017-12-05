@@ -41,7 +41,16 @@ html
       z-index: -1;
       }
       ul {list-style:none;}
-      #message{margin-top:10%;}
+      #message {margin-top:15%;}      
+      .panel-body {
+      padding-top: 10px;
+      }
+      #deleteButton {
+      margin: 1%;
+      }
+      #deleteButton:hover  {
+      background-color: red;
+      }
     | &#x9;
     | &#x9;
     title RECycle
@@ -52,14 +61,70 @@ html
     // Header
     #header  
     | &#x9;&#x9;
-    p Messages
-    #message
-    ul
-         - each item in rows
-
-          b Message 
-          li #{item.messages}
-          li From: #{item.bname}
-          li Email: #{item.bemail}
-          li Phone: #{item.vphone}
-
+    .container-fluid
+     #message 
+      ul.nav.nav-pills.nav-stacked.col-md-2
+        li.active
+          a(href='#tab_a', data-toggle='pill') Send a mail
+        | &#x9;&#x9;&#x9;  
+        li
+          a(href='#tab_b', data-toggle='pill') New Mail
+        | &#x9;&#x9;&#x9;  
+      .tab-content.col-md-10
+        // Send Mail Tab
+        #tab_a.tab-pane.active
+          .panel.panel-primary(style='width: 60%;')
+            .panel-heading
+              h3.panel-title Send a mail
+            | &#x9;&#x9;&#x9;&#x9;&#x9;   
+            .panel-body
+              .form-group
+                label(for='subject') Subject:
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                input#subject.form-control(style='width: 80%;', type='text')
+                | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                form
+                  .form-group
+                    label(for='message') Message:
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    textarea#message.form-control(style='width: 80%;', rows='5')
+        // New Mail Tab
+        #tab_b.tab-pane
+          #tab_a.tab-pane.active
+            .panel.panel-primary(style='width: 100%;')
+              .panel-heading
+                h3.panel-title New Mail
+              | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;   
+              .panel-body
+                .form-group
+                  table#NewMails.dashboard
+                    tr.header
+                      th(style='width:40%;') From
+                      |  
+                      th(style='width:50%;') Message
+                      |  
+                      th(style='width:30%;') Phone
+                      
+                      th(style='width:20%;') Date
+                      |  
+                      th(style='width:5px;')  
+                    | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                    tr
+                     - each item in rows
+  
+                      td #{item.bname}
+                      |   
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      td #{item.messages}  
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      td #{item.vphone}
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      td 11/21/17
+                      | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
+                      td
+                        button#deleteButton.btn.btn-default.btn-sm(type='button')
+                          span.glyphicon.glyphicon-minus
+      // tab content
+    // end of container
+      // Footer
+    #footer  

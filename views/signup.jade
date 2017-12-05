@@ -103,9 +103,20 @@ html
                   | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
                   .form-group
                   | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
-                  .col-md-offset-3.col-md-9
-                    button#btn-signup.btn.btn-info(type='submit')
-                      amp Sign Up
+                  input(type='checkbox', checked='checked')
+                  |  Remember me
+		  p
+		   | By creating an account you agree to our
+		   a(href='#') Terms and Privacy
+		   | .
+		 .clearfix
+		   button.cancelbtn(type='button') Cancel
+		   button.signupbtn(type='submit') Sign Up
+		 .text-right
+	          .col-md-16.col-md-offset-4
+		    span.text-right
+		     | Forgot
+		     a(href='#') password?
     // Footer
     #footer  
 
