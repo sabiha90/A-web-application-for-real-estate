@@ -237,12 +237,14 @@ html
                    }
                   var sel = document.getElementById("zip");
                   var tex = document.getElementById("search_input");
+                  
 
                   sel.addEventListener("change", function() {
                   if(sel.value == 'zipcode')
                   {
                   tex.setAttribute("placeholder","Eg.94536");
                   tex.setAttribute("name","zipcode");
+                  tex.setAttribute("onkeyup","allnumeric(tex.value);")
                   
                   }
                   else if(sel.value == 'city')
@@ -264,13 +266,14 @@ html
                   });
                   function allnumeric(inputtxt)
                    {
-                     var numbers = /^[0-9]+$\s/;
+                     var numbers = /^[0-9]*$/;
+
                      if(!inputtxt.match(numbers))
                      
                      {
                        alert('Please input numeric characters only');
                        
-                       return false;
+                     
                       }
                       } 
       #mySidenav.sidenav
