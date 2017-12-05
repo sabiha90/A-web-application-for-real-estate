@@ -118,7 +118,7 @@ router.post('/signup', function(req, res){
     
     var users = {
       "user_name": req.body.user_name,
-      "password": passwordHash.generate(req.body.password),
+      "password": req.body.password,
       "first_name": req.body.first_name,
       "last_name": req.body.last_name,
       "mob_no":  req.body.mob_no
