@@ -65,8 +65,8 @@ router.get('/parker', function(req,res,next){
   res.render('parker',{ title: 'Kachi'});
 });
 
-router.get('/home', function(req, res, next) {
-  res.render('home', { title: 'About me' });
+router.get('/aboutus', function(req, res, next) {
+  res.render('aboutus', { title: 'About us' });
 });
 
 router.get('/add_details', function(req, res, next) {
