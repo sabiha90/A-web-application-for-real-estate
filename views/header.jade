@@ -223,7 +223,10 @@ html
               h2(style='margin:0px;')
                 span.smallnav.menu(onclick='openNav()') ☰ RECycle
               h1(style='margin:0px;')
-                span.largenav RECycle
+                span.largenav
+                 a(href='#')
+                  span.glyphicon.glyphicon-home
+                    RECycle
               h4  CSC648 Student Project
             .col-sm-7.col-md-7
              form.navbar-form(role='form', method='post',action='search_results', onsubmit="return validateForm()")
@@ -294,6 +297,7 @@ html
                   function alltext(inputtxt)
                     {
                       var letters = /^[A-Za-z]+$/;
+                      inputtxt = inputtxt.replace(" ","");
                      if (inputtxt == "")
                      {
                        return;
