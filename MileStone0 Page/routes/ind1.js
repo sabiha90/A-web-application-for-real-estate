@@ -19,7 +19,8 @@ router.get('/homepage', function(req, res, next) {
           });
         }
         else{
-          res.render('homepage',{"rows":results});
+          req.session.results = results;
+          res.render('homepage',{"rows":req.session.results});
         }
         
 });
@@ -157,9 +158,10 @@ router.post('/login', function(req,res){
           });
         }
         else{
-          console.log("The solution is",house_results);
+          req.session.house_results = house_results;
+          console.log("The solution is",req.session.house_results);
           console.log("The solution is",results);
-          res.render('profile',{"person": house_results,"person2":results});
+          res.render('profile',{"person": req.session.house_results,"person2":req.session.results});
         }
        
         });
@@ -508,7 +510,6 @@ router.get('/homepage_details', function(req,res){
 });
 
 
-   
 module.exports = router;
 
 
