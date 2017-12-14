@@ -10,45 +10,18 @@ html
     script(src='https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js')
     script(src='https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js')
     link(rel='stylesheet', href='https://www.w3schools.com/w3css/4/w3.css')
+    link(href='https://fonts.googleapis.com/css?family=Aguafina Script', rel='stylesheet')
+    | &#x9;
+    link(href='https://fonts.googleapis.com/css?family=Allura', rel='stylesheet')
+    | &#x9;
+    link(href='https://fonts.googleapis.com/css?family=Annie Use Your Telescope', rel='stylesheet')
     // Load Header and Footer
     script.
       $(function() {
       $("#header").load("/header1");
       $("#footer").load("/footer");
       });
-    script.
-      $(document).ready(function(){
-      //Feature Houses
-   
-
-      $("#FeatureHouseSection").css("background-image", "url('http://designexplora.com/wp-content/uploads/2016/07/Design-Wallpaper-And-Photo-High-Resolution-Download-Interior-Design-In-Interior-Design-Pictures.jpg')");
-      $("#FeautureDesciption").text("Just a demo!");
-      
-      //New Houses
-      $("#NewHouse1").css("background-image", "url('https://static.pexels.com/photos/259597/pexels-photo-259597.jpeg')");
-      $("#NewHouse1link").attr('href','#');
-      $("#NewHouse2").css("background-image", "url('https://www.e-architect.co.uk/images/jpgs/melbourne/cloud_house_m230712_j14.jpg')");
-      $("#NewHouse2link").attr('href','#');
-      $("#NewHouse3").css("background-image", "url('http://www.alisonbrooksarchitects.com/wp-content/uploads/2011/07/Alison-Brooks-Architects-_-Herringbone-Houses-_-Photo-Exterior-Back-Garden-Evening-1200x876.jpg')");
-      $("#NewHouse3link").attr('href','#');
-      $("#NewHouse4").css("background-image", "url('https://www.e-architect.co.uk/images/jpgs/brazil/linhares-dias-house-d180913-j13.jpg')");
-      $("#NewHouse4link").attr('href','#');
-      $("#NewHouse5").css("background-image", "url('http://clv.h-cdn.co/assets/cm/15/09/54eb988a7ca43_-_tiny-houses-tiny-texas-houses-0215-xln-49617868.jpg')");
-      $("#NewHouse5link").attr('href','#');
-      $("#NewHouse6").css("background-image", "url('http://www.worldhouseinfo.com/images/flash/3387-turf-houses.jpg')");
-      $("#NewHouse6link").attr('href','#');
-      //Rating Houses
-      $("#RatingHouse1Img").css("background-image", "url('https://i.pinimg.com/736x/4c/1e/0d/4c1e0da24f9be30266a3814f8424b6a5--two-story-houses-narrow-house-plans-two-story.jpg')");
-      $("#RatingHouse1link").attr('href','http://google.com');
-      $("#RatingAddress1").text("San Francsico somewhere some street");
-      $("#RatingDescription1").text("something something a b c de a sada sdaisbd oiabsdioaxzklncklzs");
-      $("#RatingPrice1").text("$1");
-      $("#RatingHouse2Img").css("background-image", "url('http://www.worldhouseinfo.com/images/flash/3387-turf-houses.jpg')");
-      $("#RatingHouse2link").attr('href','http://google.com');
-      $("#RatingAddress2").text("San Francsico somewhere some street");
-      $("#RatingDescription2").text("something something a b c de a sada sdaisbd oiabsdioaxzklncklzs");
-      $("#RatingPrice2").text("$10");
-      });
+    |  
     style.
       #background {
       position: fixed;
@@ -64,239 +37,84 @@ html
       filter:alpha(opacity=40);
       z-index: -1;
       }
-      #FeatureHouseSection {
-      height: 650px;
-      background-size: cover;
-      }
-      #FeatureContactBox {
-      position: absolute;
-      background-color: rgb(0, 51, 102);
-      width: 200px;
-      height: 70px;
-      color: white;
-      right: 10%;
-      opacity: 0.9;
-      }
-      #FeatureContactBox:hover {
-      filter: drop-shadow(8px 8px 10px black);
-      }
-      #FeatureDescriptionBox {
-      position: absolute;
-      width: 150px;
-      height: 100px;
-      right: 60%;
-      top: 200px;
-      text-align: center;
-      }
-      #FeatureDescriptionBoxOpacity {
-      position: absolute;
-      background-color: rgb(0, 51, 102);
-      filter: drop-shadow(8px 8px 10px black);
-      width: 350px;
+      #SampleHouseSection {
       height: 400px;
-      color: white;
-      opacity: 0.8;
-      z-index: 0;
-      }
-      #FeatureDescriptionInfo {
-      text-align: center;
-      position: relative;
-      color: white;
-      z-index: 1;
-      }
-      #FeatureDescription{
-      text-align: center;
-      z-index: 1;
-
-      }
-      #BlankSection1, #BlankSection2 {
-      height: 150px;
-      background-color: transparent;
-      }
-      #NewHousesSection {
-      background-color:transparent;
-      }
-      .NewHousesBox {
-      position:relative;
-      display: inline-block;
-      background-color: white;
-      height: 350px;
-      width:300px;
+      width: 100%;
       background-size: cover;
-      opacity: 1;
-      transition: .5s ease;
-      backface-visibility: hidden;
+      background-image: url('http://designexplora.com/wp-content/uploads/2016/07/Design-Wallpaper-And-Photo-High-Resolution-Download-Interior-Design-In-Interior-Design-Pictures.jpg');
       }
-      .NewHousesBox:hover {
-      opacity: 0.5;
-      }
-      .MiddleBox {
-      transition: .5s ease;
-      opacity: 0;
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      -ms-transform: translate(-50%, -50%)
-      }
-      .NewHousesBox:hover .MiddleBox {
-      opacity: 1;
-      }
-      .text {
+       .text {
       background-color: #4CAF50;
       color: white;
       font-size: 16px;
       padding: 16px 32px;
       }
-      #TopRatingHousesSection1 {
-      height: 400px;
-      background-color: rgb(0, 51, 102);
+      .BlankSection {
+      height: 100px;
+      background-color: transparent;
       }
-      #RatingHouse1Img {
-      position: absolute;
-      height: 350px;
-      width: 30%;
-      right: 60%;
-      top: 1000px;
-      background-size: cover;
-      }
-      #RatingHouse1Img:hover {
-      filter: drop-shadow(8px 8px 10px black);
-      }
-      #RatingHouse1DescriptionBox {
-      position: relative;
-      height: 275px;
-      width: 35%;
-      left: 50%;
-      top: 10%;
+      #RECycleLogoBox {
+      width: 50%;
+      margin: 0 auto;
       color: white;
+      margin-top: 15%;
       text-align: center;
-      border-top: 2px dashed #046ca3;
-      border-bottom: 1px dashed #046ca3;
-      box-shadow: inset 0 -1px 0 0 #046ca3, inset 0 1px 0 0 #046ca3, 0 1px 0 0 #046ca3, 0 -1px 0 0 #046ca3;
-      margin-bottom: 1px;
-      }
-      #TopRatingHousesSection2 {
-      height: 400px;
-      background-color: rgb(0, 70, 111);
-      }
-      #RatingHouse2Img {
-      position: absolute;
-      height: 350px;
-      width: 30%;
-      right: 15%;
-      top: 1525px;
-      background-size: cover;
-      }
-      #RatingHouse2Img:hover {
-      filter: drop-shadow(8px 8px 10px black);
-      }
-      #RatingHouse2DescriptionBox {
-      position: relative;
-      height: 275px;
-      width: 35%;
-      left: 10%;
-      top: 10%;
-      color: white;
-      text-align: center;
-      border-top: 2px dashed #046ca3;
-      border-bottom: 1px dashed #046ca3;
-      box-shadow: inset 0 -1px 0 0 #046ca3, inset 0 1px 0 0 #046ca3, 0 1px 0 0 #046ca3, 0 -1px 0 0 #046ca3;
-      margin-bottom: 1px;
       }
       #TitleText {
-      border: 5px solid #900;
-      border-top: none;
-      border-left: none;
-      width: 500px;
+      width: 100%;
       margin: 0 auto;
-      border-color: #004080;
-      color: #004080;
+      color: white;
       }
+      .thumbnail {
+      position: relative;
+      padding: 0px;
+      margin-bottom: 20px;
+      align: center;
+      }
+      .thumbnail:hover {
+      filter: drop-shadow(8px 8px 10px black);
+      }
+      .thumbnail img {
+      width: 300px;
+      }
+      p {
+      color:black;
+      margin-left:10px;
+      }
+    |     
     title RECycle
+  |  
   body
 
     // Background
     #background
     // Header
     #header  
-    // FeatureSection
-
-    #FeatureHouseSection.container-fluid
-      // Contact Now Box
-      
-      // Description Box
-      
-      #FeatureDescriptionBox
-        // Set the box opacity
-        #FeatureDescriptionBoxOpacity
-        // Content
-        #FeatureDescriptionInfo
-          h3#FeautureDesciption  Description 
-          h3#FeaturePrice  
-          a#CheckItOutButton(href='#')
-            
-    
-    #BlankSection1.container-fluid
-    // RatingHouseSections
-    #TitleText
-      h2.text-center Top Rating Properties 
-    br
-    br
-    #TopRatingHousesSection1.container-fluid
-      // Image
-      a#RatingHouse1link(href='#')
-        #RatingHouse1Img  
-      // Rating Description Box
-      #RatingHouse1DescriptionBox
-        h3#RatingAddress1  Address 
-        h3#RatingDescription1  Description 
-        h2#RatingPrice1  Price 
-    #TopRatingHousesSection2.container-fluid
-      // Image
-      a#RatingHouse2link(href='#')
-        #RatingHouse2Img  
-      // Rating Description Box
-      #RatingHouse2DescriptionBox
-        h3#RatingAddress2  Address 
-        h3#RatingDescription2  Description 
-        h2#RatingPrice2  Price 
-    #BlankSection2.container-fluid
+    // SampleSection
+    #SampleHouseSection.container-fluid
+      #RECycleLogoBox
+        h1(style="font-size: 200%; font-family: 'Helvetica Neue'; text-shadow: 2px 2px #ff0000;") This is a demo by Team 13
+    | &#x9;
+    .container-fluid
     // NewHousesSection
-    #NewHousesSection.container-fluid
-      #TitleText
-        h2.text-center  Latest Properties for Sale
-      br
-      br
-      // Top 6 Newest House
-    
-      #NewHouses.row
-        
-     - each item in rows
-        #NewHouse1.NewHousesBox.col-sm-6.col-md-4
-          .MiddleBox
-            a#NewHouse1link(href='/home_search_results?id=#{item.id}')
-              .text Check It Out
-        #NewHouse2.NewHousesBox.col-sm-6.col-md-4
-          .MiddleBox
-            a#NewHouse2link(href='#')
-              .text Check It Out
-        #NewHouse3.NewHousesBox.col-sm-6.col-md-4
-          .MiddleBox
-            a#NewHouse3link(href='#')
-              .text Check It Out
-        #NewHouse4.NewHousesBox.col-sm-6.col-md-4
-          .MiddleBox
-            a#NewHouse4link(href='#')
-              .text Check It Out
-        #NewHouse5.NewHousesBox.col-sm-6.col-md-4
-          .MiddleBox
-            a#NewHouse5link(href='#')
-              .text Check It Out
-        #NewHouse6.NewHousesBox.col-sm-6.col-md-4
-          .MiddleBox
-            a#NewHouse6link(href='#')
-              .text Check It Out
-    
-    // Footer
-    #footer  
+   #FeatureSection.container-fluid
+     #TitleText
+        h2.text-center(style="font-size: 400%; font-family: 'Helvetica Neue';color:#191970;")  Featured Properties for Sale
+        br
+        br
+        // Top 6 Feature House
+        .row
+          - each item in rows
+            .col-xs-18.col-sm-6.col-md-3
+               .thumbnail
+                 a(href='home_search_results?id=#{item.id}')
+                    img(src='/images/#{item.image}', style="height:180px;")
+                    .text Check It Out
+                    .caption
+                   p  
+                    |$#{item.price}
+                    br
+                    |#{item.house_number},#{item.street},#{item.city},#{item.state},#{item.zipcode}
+      
+       #footer   
+     

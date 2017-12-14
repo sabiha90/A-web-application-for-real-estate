@@ -157,7 +157,8 @@ html
           .container
           #searchResult
             - each item in rows 
-               #featureBox
+              
+                 #featureBox
                  
                     a(href="/home_search_results?id=#{item.id}") 
                      p.pricetag.overlay $#{item.price} 

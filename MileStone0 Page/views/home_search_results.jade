@@ -70,38 +70,7 @@ html
       table
       
         - each item in rows 
-         
-          td(valign="top")
-            #map 
-                    |     
-                    script.
-                       function initMap() {
-                          var map = new google.maps.Map(document.getElementById('map'), {
-                          zoom: 12,
-                          center: {lat: 37.722, lng: -122.478}
-                          });
-                          var geocoder = new google.maps.Geocoder();
-      
-                          var address = document.getElementById('address').innerHTML;
-                          geocoder.geocode({'address': address}, function(results, status) {
-                          if (status === 'OK') {
-                            var resultsMap = new google.maps.Map(document.getElementById('map'), {
-                            zoom: 12,
-                            center: {lat: 37.722, lng: -122.478}
-                           });
-                            resultsMap.setCenter(results[0].geometry.location);
-                            var marker = new google.maps.Marker({
-                            map: resultsMap,
-                            position: results[0].geometry.location
-                          });
-                        } else {
-                           alert('Geocode was not successful for the following reason: ' + status);
-                         }
-                         });
-                       }
-                    script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDOIMFbTbLtGiTA6u-FPXasu4vmIF-HL2A&callback=initMap')
-
-          td
+         td
             #details
                 ul
                  li 
@@ -111,9 +80,8 @@ html
                  #address #{item.street},#{item.city},#{item.zipcode}
                  
 
-            
+           td
               form#contact_form(action='/message?id=#{item.id}', method='POST', enctype='multipart/form-data')
-                     
 
                   p Interested in buying this house? 
                     a(href="#contact") Contact the seller
@@ -144,6 +112,40 @@ html
                     | 
                     input#submit_button(type='submit', value='Send message')
 
+
+         
+          tr(valign="top")
+            #map 
+                    |     
+                    script.
+                       function initMap() {
+                          var map = new google.maps.Map(document.getElementById('map'), {
+                          zoom: 12,
+                          center: {lat: 37.722, lng: -122.478}
+                          });
+                          var geocoder = new google.maps.Geocoder();
+      
+                          var address = document.getElementById('address').innerHTML;
+                          geocoder.geocode({'address': address}, function(results, status) {
+                          if (status === 'OK') {
+                            var resultsMap = new google.maps.Map(document.getElementById('map'), {
+                            zoom: 12,
+                            center: {lat: 37.722, lng: -122.478}
+                           });
+                            resultsMap.setCenter(results[0].geometry.location);
+                            var marker = new google.maps.Marker({
+                            map: resultsMap,
+                            position: results[0].geometry.location
+                          });
+                        } else {
+                           alert('Geocode was not successful for the following reason: ' + status);
+                         }
+                         });
+                       }
+                    script(async='', defer='', src='https://maps.googleapis.com/maps/api/js?key=AIzaSyDOIMFbTbLtGiTA6u-FPXasu4vmIF-HL2A&callback=initMap')
+
+          
+                     
 
               
               
