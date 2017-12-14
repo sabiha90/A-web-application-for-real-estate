@@ -208,18 +208,19 @@ html
     // Background
     #background
     // Header
-   - each item in person
+   - each item in person2
     header
       #flipkart-navbar
         .container
           .row.row1
             ul.largenav.pull-right
               li.upper-links
-                a.links(href='homepage') Home
+                a.links(href='/homepage') Home
               li.upper-links
-                a.links(href="/message_details?id=#{item.id}"  id="id") Messages
+                a.links(href="message_details?id=#{item.id}"  id="id") Messages
               li.upper-links
-                a.links(href="/add_details?id=#{item.id}"  id="id") Add Details
+                a.links(href="add_details?id=#{item.id}"  id="id") Add Details
+              
               li.upper-links
                 a.links(href='login') Logout
               li.upper-links
@@ -251,15 +252,11 @@ html
     
     .container
         .main-content
-
+        p Welcome to your dashboard 
         ul
 
-         
-          p Welcome to your dashboard #{item.first_name}
-          li User Name: #{item.user_name} 
-          li First Name: #{item.first_name}
-          li Last Name: #{item.last_name} 
-          li Phone: #{item.mob_no}
-          li 
-            a(href="/options?id=#{item.id}" id="options") Other Options
-       
+        - each item in person
+          
+           img(src="/images/#{item.image}",style="height:200px;width:400px;margin-top: 5%;")
+          
+          

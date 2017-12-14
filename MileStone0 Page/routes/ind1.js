@@ -75,6 +75,7 @@ router.get('/seller_header', function(req, res, next) {
 });
 
 
+
 var mysql      = require('mysql');
 var connection = mysql.createConnection({
   host     : 'localhost',
@@ -145,8 +146,23 @@ router.post('/login', function(req,res){
         //console.log(results[0].user_name);
         req.session.results = results
         console.log('session',req.session.id);
+        connection.query('SELECT * from property_details where user_id=(SELECT id FROM users WHERE user_name = ?)',user_name, function (error, house_results, fields) {
+        console.log('this.sql', this.sql);
+        if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          });
+        }
+        else{
+          console.log("The solution is",house_results);
+          console.log("The solution is",results);
+          res.render('profile',{"person": house_results,"person2":results});
+        }
        
-        res.render('profile',{"person": req.session.results});
+        });
         
       }
       else{
