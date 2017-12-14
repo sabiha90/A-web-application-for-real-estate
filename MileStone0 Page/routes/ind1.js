@@ -8,7 +8,7 @@ var fs = require('fs');
 
 router.get('/homepage', function(req, res, next) {
   console.log(req.session.id);
-  connection.query('select * from property_details LIMIT 3', function (error, results, fields){
+  connection.query('select * from property_details LIMIT 4', function (error, results, fields){
   console.log('this.sql',this.sql);    
   if(error)
           {
