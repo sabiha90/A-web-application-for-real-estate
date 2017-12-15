@@ -256,7 +256,7 @@ html
         ul
 
         - each item in person
-          
-           img(src="/images/#{item.image}",style="height:200px;width:400px;margin-top: 5%;")
+          a(href='seller_results?id=#{item.id}')
+             img(src="/images/#{item.image}",style="height:200px;width:400px;margin-top: 5%;")
           
           

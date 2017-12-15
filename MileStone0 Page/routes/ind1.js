@@ -509,6 +509,24 @@ router.get('/homepage_details', function(req,res){
       });
 });
 
+router.get('/seller_results', function(req, res, next) {
+  var id = req.query.id;
+  connection.query('select * from property_details where id = ? ', id, function (error, results, fields){
+  console.log('this.sql',this.sql);    
+        if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          res.render('seller_results',{"rows":results});
+        }
+        
+      });
+});
 
 module.exports = router;
 
