@@ -474,6 +474,27 @@ router.get('/seller_results', function(req, res, next) {
       });
 });
 
+router.post('/delete', function(req, res, next) {
+   var id = req.query.id;
+   console.log(id);
+   connection.query('delete from property_details where id = ? ', id, function (error, results, fields){
+   console.log('this.sql',this.sql);    
+        if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          console.log('The solution is: ', results);
+          res.render('homepage');
+        }
+        
+    
+});
+});
 
 
 
