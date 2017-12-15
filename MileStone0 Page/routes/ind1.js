@@ -207,10 +207,7 @@ router.post('/message', function(req,res){
     })
   }else{
     console.log('The solution is: ', results);
-    res.send({
-      "code":200,
-      "success":"Your message has been sent"
-        });
+    
   }
 });
 });
@@ -257,7 +254,8 @@ router.post('/search', function(req, res)
     console.log('this.sql', results.length);
     if(results.length == 0)
     {
-       res.send({"rows": "Sorry Not FOund!"});
+       res.writeHead(200);
+       res.end("Sorry Not Found!!");
     //res.send({
      // "code":400,
       //"failed":"error ocurred"
@@ -269,15 +267,15 @@ router.post('/search', function(req, res)
       console.log('The solution is: ', results);
       res.render('search_results',{"rows":results});
    }
-   else
-   {
-     res.render('search_results',{"message": req.flash("Sorry Not FOund!")});
+   //else
+   //{
+     //res.render('search_results',{"message": req.flash("Sorry Not FOund!")});
     //res.send({
 
       //"code": 400,
       //"failed":"Sorry Not Found!"
     //});
-   }
+   //}
     
 });
   }
@@ -289,7 +287,8 @@ router.post('/search', function(req, res)
     console.log('this.sql', results.length);
     if(results.length == 0)
     {
-       res.send({"rows": "Sorry Not FOund!"});
+       res.writeHead(200);
+       res.end("Sorry Not Found!!");
     //res.send({
      // "code":400,
       //"failed":"error ocurred"
@@ -298,18 +297,18 @@ router.post('/search', function(req, res)
    else if(results.length<6)
    {
     
-      console.log('The solution is: ', results);
-      res.render('search_results',{"rows":results});
+      console.log('The solution is: ', results.length);
+      res.render('search_results',{"rows":results,"length": results.length});
    }
-   else
-   {
-     res.render('search_results',{"message": req.flash("Sorry Not FOund!")});
+   //else
+   //{
+    // res.render('search_results',{"message": req.flash("Sorry Not FOund!")});
     //res.send({
 
       //"code": 400,
       //"failed":"Sorry Not Found!"
     //});
-   }
+   //}
     
 });
 
@@ -322,7 +321,8 @@ router.post('/search', function(req, res)
     console.log('this.sql', results.length);
     if(results.length == 0)
     {
-       res.send({"rows": "Sorry Not FOund!"});
+       res.writeHead(200);
+       res.end("Sorry Not Found!!");
     //res.send({
      // "code":400,
       //"failed":"error ocurred"
@@ -412,24 +412,7 @@ router.get('/home_search_results', function(req,res){
 });
 
 
-router.get('/options', function(req,res){
-  var id = req.query.id;
-  connection.query("SELECT * FROM `property_details` WHERE `user_id`= ?", id, function (error, results, fields) {
-  console.log('this.sql',this.sql);    
-        if(error)
-          {
-            console.log("error ocurred",error);
-            res.send({
-            "code":400,
-            "failed":"error ocurred"
-          })
-        }
-        else{
-          res.render('edit_page_results',{"rows":results});
-        }
-        
-      });
-});
+
 
 router.get('/sort', function(req,res){
   var val = req.query.q;
@@ -526,6 +509,28 @@ router.get('/seller_results', function(req, res, next) {
         }
         
       });
+});
+router.post('/delete', function(req, res, next) {
+   var id = req.query.id;
+   console.log(id);
+   connection.query('delete from property_details where id = ? ', id, function (error, results, fields){
+   console.log('this.sql',this.sql);    
+        if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          onsole.log('The solution is: ', results);
+        }
+        
+    
+});
+
+
 });
 
 module.exports = router;

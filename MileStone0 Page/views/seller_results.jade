@@ -50,11 +50,14 @@ html
                    img(src="/images/#{item.image}",style="height:200px;width:400px;margin-top: 15%;")
                  li Square Feet: #{item.square_size}
                  li Number of Bedrooms: #{item.number_of_bedrooms}
-                 #address #{item.street},#{item.city},#{item.zipcode}
+                 li #{item.street},#{item.city},#{item.zipcode}
  
-               form#contact_form(action='/delete', method='POST')
-                 button(type="submit") Delete
-                 button(type="submit") Edit
+                    form#contact_form(action='/delete?id=#{item.id}', method='POST',onsubmit="delete_message();")
+                      button(type="submit") Delete
+                      button(type="submit") Edit
+          script.
+             function delete_message(){alert("Property Deleted");}
+
               
  
                                                   
