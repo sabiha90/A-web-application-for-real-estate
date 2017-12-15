@@ -229,7 +229,7 @@ html
     // Background
     #background
     // Header
-   - each item in person
+   - each item in person2
     header
       #flipkart-navbar
         .container
@@ -268,16 +268,9 @@ html
     
     .container
         .main-content
-
+        p Welcome to your dashboard 
         ul
 
-         
-          p Welcome to your dashboard #{item.first_name}
-          li User Name: #{item.user_name} 
-          li First Name: #{item.first_name}
-          li Last Name: #{item.last_name} 
-          li Phone: #{item.mob_no}
-          li 
-            a(href="/options?id=#{item.id}" id="options") Other Options
-    
- 
+        - each item in person
+          
+           img(src="#{item.image}",style="height:200px;width:400px;margin-top: 5%;")

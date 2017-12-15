@@ -165,14 +165,25 @@ console.log("Session: "+sess);
     console.log('The solution is: ', results[0].password);
     if(results.length >0){
       if(results[0].password == password)
-      {
-	console.log(">>>>>>>>>>>>>>>>>>>>>>>> Test If not an error");
-        //res.send({
-         // "code":204,
-         // "success":"Username and password matches"
-          //  });
-        res.render('profile',{"person": results});
-        
+      { 
+         connection.query('SELECT * from property_details where user_id=(SELECT id FROM users WHERE user_name = ?)',user_name, function (error, house_results, fields) {
+        console.log('this.sql', this.sql);
+        if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          });
+        }
+        else{
+          //req.session.house_results = house_results;
+          console.log("The solution is",house_results);
+          console.log("The solution is",results);
+          res.render('profile',{"person": house_results,"person2":results});
+        }
+       
+        });
       }
       else{
         res.send({
