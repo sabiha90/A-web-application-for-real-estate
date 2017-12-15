@@ -208,13 +208,6 @@ console.log("Session: "+sess);
 
 
 
-
-
-
-
-
-
-
 router.post('/search_results', function(req, res)
 {
 
@@ -236,13 +229,14 @@ router.post('/search_results', function(req, res)
  // }
   if(results.length == 0)
   {
-    res.send({"rows": "Sorry Not FOund!"});
+    res.writeHead(200);
+    res.end("Sorry Not Found!!");
   }
   else if(results.length<6)
   {
     
     console.log('The solution is: ', results);
-    res.render('search_results',{"rows":results});
+    res.render('search_results',{"rows":results,"length": results.length});
   }
     
 });
@@ -261,13 +255,14 @@ if(city)
  // }
   if(results.length == 0)
   {
-    res.send({"rows":"Sorry Not Found!"});
+    res.writeHead(200);
+    res.end("Sorry Not Found!!");
   }
   else if(results.length<6)
   {
 
     console.log('The solution is: ', results);
-    res.render('search_results',{"rows":results});
+    res.render('search_results',{"rows":results,"length":results.length});
   }
 });
 }
@@ -285,13 +280,14 @@ if(street)
  // }
   if(results.length == 0)
   {
-    res.send({"rows":"Sorry Not Found!"});
+    res.writeHead(200);
+    res.end("Sorry Not Found!!");
   }
   else if(results.length<6)
   {
 
     console.log('The solution is: ', results);
-    res.render('search_results',{"rows":results});
+    res.render('search_results',{"rows":results,"length":results.length});
   }
 });
 }
@@ -378,10 +374,6 @@ router.post('/message', function(req,res){
     })
   }else{
     console.log('The solution is: ', results);
-    res.send({
-      "code":200,
-      "success":"Your message has been sent"
-        });
   }
 });
 });
@@ -463,6 +455,24 @@ router.get('/sort', function(req,res){
   }      
 });
 
+router.get('/seller_results', function(req, res, next) {
+  var id = req.query.id;
+  connection.query('select * from property_details where id = ? ', id, function (error, results, fields){
+  console.log('this.sql',this.sql);    
+        if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          res.render('seller_results',{"rows":results});
+        }
+        
+      });
+});
 
 
 

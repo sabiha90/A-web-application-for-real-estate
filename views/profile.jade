@@ -268,9 +268,10 @@ html
     
     .container
         .main-content
-        p Welcome to your dashboard 
+        p Welcome to your dashboard
+        | Here are the properties you have uploaded for sale 
         ul
 
         - each item in person
-          
-           img(src="#{item.image}",style="height:200px;width:400px;margin-top: 5%;")
+          a(href='seller_results?id=#{item.id}')
+             img(src="#{item.image}",style="height:200px;width:400px;margin-top: 5%;") 
