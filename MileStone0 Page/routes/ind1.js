@@ -524,7 +524,8 @@ router.post('/delete', function(req, res, next) {
           })
         }
         else{
-          onsole.log('The solution is: ', results);
+          console.log('The solution is: ', results);
+          res.render('homepage');
         }
         
     
