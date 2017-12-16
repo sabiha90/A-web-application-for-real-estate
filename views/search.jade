@@ -52,7 +52,7 @@ html
 
       
 
-      form.search-form(role='form', method='post', action='search')
+      form.search-form(role='form', method='post', action='search', id='search_input')
         .form-group.has-feedback
           label.sr-only(for='search') Search
           #search
@@ -62,6 +62,14 @@ html
 
 
       script.
+	     function validateForm() {
+		       var x = document.getElementById("search_input").value;
+		       console.log(x);
+		       if (x == "") {
+			      alert("Name must be filled out");
+			      return false;
+		       }
+	     }
          var sel = document.getElementById("activity");
          var tex = document.getElementById("search");
           sel.addEventListener("change", function() {
