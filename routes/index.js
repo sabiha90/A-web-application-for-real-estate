@@ -496,6 +496,24 @@ router.post('/delete', function(req, res, next) {
 });
 });
 
+router.post('/deleteMessage', function(req, res, next) {
+   var contact_ID = req.query.contact_ID;
+   console.log(contact_ID);
+   connection.query('delete from message_tab where contact_ID = ? ',contact_ID, function (error, results, fields){
+   console.log('this.sql',this.sql);
+        if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        } 
+        else{
+          console.log('The solution is: ', results);
+        }
+   });
+});
 
 
 module.exports = router;

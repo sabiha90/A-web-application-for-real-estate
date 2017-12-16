@@ -76,7 +76,8 @@ html
       |         
       .second-bar
         .container
-           
+          h2.logo.inline
+            a(href='#')  LOG 
           |                 
           .social-icons.inline
             a.twitter(href='#')

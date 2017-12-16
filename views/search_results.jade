@@ -34,13 +34,13 @@ html
       .pricetag {
       text-align: center;
       color: #000000;
-      font-size: 150%;
+      font-size: 100%;
       font-weight: bold;
       }
       #featureBox {
       position: relative;
       display: inline-block;
-      width: 500px;
+      width: 400px;
       height: 300px;
       background-color: white;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
@@ -56,7 +56,7 @@ html
       height: 20%;
       }
       #featureImage {
-      width: 500px;
+      width: 400px;
       height: 250px;
       }
       .normalBox {
@@ -136,8 +136,7 @@ html
     // Background
     #background
     // Header
-    #header  
-    .container-fluid.BlankSection 
+    #header   
     h4 Search Result...
     // ArrowLine Image
     img#lineimage(src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Flowchart_Line.svg/1280px-Flowchart_Line.svg.png')
@@ -161,7 +160,6 @@ html
                    option(value='number_of_bedrooms') Number of Bedrooms
                    option(value='square_size') Square feet
 
-     
         .col-xs-9.col-sm-9.col-md-9
           .container
           #searchResult
@@ -170,7 +168,7 @@ html
                #featureBox
                     a(href="home_search_results?id=#{item.id}") 
                      p.pricetag.overlay $#{item.price} 
-                     img(src="#{item.image}", style="height:250px;width:500px;")
+                     img(src="#{item.image}", style="height:250px;width:400px;")
                     p.text-center #{item.house_number}, #{item.street}, #{item.city}, #{item.state}, #{item.zipcode}
 
     #footer  

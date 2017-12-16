@@ -22,7 +22,7 @@ html
       #flipkart-navbar {
       background-color:hsl(210, 100%, 20%);
       color: #FFFFFF;
-      position: fixed;
+      position: relative;
       z-index: 1;
       width: 100%;
       }
@@ -214,12 +214,6 @@ html
                   li.profile-li
                     a.profile-links(href='http://clashhacks.in/') Selling Properties DashBoard
                   li.profile-li
-                    a.profile-links(href='http://clashhacks.in/') Link
-                  li.profile-li
-                    a.profile-links(href='http://clashhacks.in/') Link
-                  li.profile-li
-                    a.profile-links(href='http://clashhacks.in/') Link
-                  li.profile-li
                     a.profile-links(href='http://clashhacks.in/') Sign Out
           .row.row2
             .col-sm-3
@@ -227,7 +221,7 @@ html
                 span.smallnav.menu(onclick='openNav()') ☰ RECycle
               h1(style='margin:0px;') 
                a(href='homepage') RECycle
-              h4  CSC648 Student Project
+              h5 Short for Real Estate Cycle. SFSU Software Engineering Fall 2017 Student Project.For Demonstration Purposes only
             .col-sm-7.col-md-7
              form.navbar-form(role='form', method='post',action='search_results', onsubmit="return validateForm() & saveComment()")
               select.selectpicker.form-control( name="selectpicker",id ="zip",data-style='btn-danger')
@@ -329,9 +323,6 @@ html
         a.profile-links(href='http://yazilife.com/') Profile
         a.profile-links(href='http://hacksociety.tech/') Sell a Property
         a.profile-links(href='http://clashhacks.in/') Selling Properties DashBoard
-        a.profile-links(href='http://clashhacks.in/') Link
-        a.profile-links(href='http://clashhacks.in/') Link
-        a.profile-links(href='http://clashhacks.in/') Link
         | <
         a.profile-links(href='http://clashhacks.in/') Sign Out
 
