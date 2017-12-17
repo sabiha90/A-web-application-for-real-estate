@@ -302,13 +302,16 @@ html
 
                     } 
                     document.getElementById("search_input").value = localStorage.getItem("search");
+                    document.getElementById("zip").value = localStorage.getItem("option");
 
                     function saveComment() {
                     var search = document.getElementById("search_input").value;
-                    
+                    var select = document.getElementById("zip").value;
+                    console.log(select);
 
                     localStorage.setItem("search", search);
-                    location.reload();
+                    localStorage.setItem("option", select);
+                    localStorage.reload();
                     return false;
                    //return true;
                    }

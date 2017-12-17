@@ -31,10 +31,9 @@ html
     | &#x9;
     | &#x9;
     style.
-
       .pricetag {
       text-align: center;
-      color: #00000;
+      color: #000000;
       font-size: 150%;
       font-weight: bold;
       }
@@ -45,7 +44,8 @@ html
       height: 300px;
       background-color: white;
       box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
-      margin-top: 10%;
+      margin: 10px;
+      margin-top: 50px;
       }
       #featureBox:hover {
       -webkit-filter: drop-shadow(8px 8px 10px black);
@@ -98,8 +98,11 @@ html
       opacity: 0.8;
       }
       .panel {
-      width: 100%;
-      margin-top: 30%;
+      width: 100%
+      }
+      .BlankSection {
+      height: 100px;
+      background-color :transparent;
       }
       #background {
       position: fixed;
@@ -124,14 +127,18 @@ html
       position: relative;
       display: inline-block;
       }
-      #searchResult {margin-top:6%}
+      .panel-primary {
+      border-color: #337ab7;
+      margin-top: 60px;
+      }
+      .panel #divAsc{float:right;}
   | &#x9;
   body
     // Background
     #background
     // Header
     #header  
-    
+    .container-fluid.BlankSection 
     h4 Search Result...
     // ArrowLine Image
     img#lineimage(src='https://upload.wikimedia.org/wikipedia/commons/thumb/6/6c/Flowchart_Line.svg/1280px-Flowchart_Line.svg.png')
@@ -145,7 +152,7 @@ html
         .col-xs-6.col-sm-3.col-md-3
           .panel.panel-primary
             .panel-heading
-              h3.panel-title Filter
+              h3.panel-title Sort
             | &#x9;&#x9;&#x9;&#x9;&#x9;   
             .panel-body
               .w3-bar-item
@@ -153,19 +160,25 @@ html
                    option(value='none') Sort Results By
                    option(value='price') Price
                    option(value='number_of_bedrooms') Number of Bedrooms
-                   option(value='square_size') Square feet  
+                   option(value='square_size') Square feet
+                #divAsc
+                  input(type="radio", name= "radioSel", class="radioSel", value='ASC', checked) 
+                  label(for="contactChoice1") Ascending
+                  br
+                  input(type="radio", name= "radioSel",class="radioSel",value="DESC") 
+                  label(for="contactChoice1") Descending
+                  
+
+
 
      
         .col-xs-9.col-sm-9.col-md-9
           .container
           #searchResult
-             p #{length} results displayed
-            - each item in rows 
-
-              
-                 #featureBox
-                 
-                    a(href="/home_search_results?id=#{item.id}") 
+            p #{length} results displayed
+            - each item in rows
+               #featureBox
+                    a(href="home_search_results?id=#{item.id}") 
                      p.pricetag.overlay $#{item.price} 
                      img(src="/images/#{item.image}", style="height:250px;width:500px;")
                     p.text-center #{item.house_number}, #{item.street}, #{item.city}, #{item.state}, #{item.zipcode}
@@ -176,14 +189,26 @@ html
       script.
  
          function loadDoc() {
+            var radio = document.getElementsByClassName("radioSel");
+            for(i=0; i<radio.length;i++)
+            {
+               if (radio[i].checked){
+                  opt = radio[i].value;
+                  opt = opt.replace(/^"|"$/g, '');
+               }
+            }
+            console.log(opt);
+            var search_val = document.getElementById("search_input").value;
             var sel = document.getElementById("selOption");
-            var details = document.getElementById("featureBox");
-            var city_details = details.getElementsByTagName('p');
-            var str = city_details[1].innerHTML.split(',')[2];
-            console.log("hello",str);
+            var select_opt = document.getElementById("zip")
+            //var details = document.getElementById("featureBox");
+            //var city_details = details.getElementsByTagName('p');
+            //var str = city_details[1].innerHTML.split(',')[2];
+            //console.log("hello",str);
             var query = sel.value;
-            var url = "/sort?q="+query + "&city="+str.trim();
-            console.log(query);
+            var param1 = select_opt.value;
+            var url = "/sort?q="+query + "&" + "&param1" + "=" + search_val + "&" + "o" + "=" + opt;
+            console.log(url);
             var xhttp = new XMLHttpRequest();
             xhttp.onreadystatechange = function() {
             if (this.readyState == 4 && this.status == 200) {
@@ -196,7 +221,7 @@ html
              
               divResults.innerHTML = "";
 
-              alert(divResults.id);
+             
 
               for (var i = 0; i < rows.length; i++){
                 var row = rows[i];
@@ -210,7 +235,7 @@ html
                 a.setAttribute("href","/home_search_results?id=" + row.id);
                 p1.setAttribute("class","pricetag overlay");
                 p1.innerHTML = "$" + row.price;
-                img.setAttribute("src", "/images/" + row.image);
+                img.setAttribute("src", "/images/"+row.image);
                 img.setAttribute("height","250px");
                 img.setAttribute("width","500px");
                 p2.setAttribute("class","text-center");

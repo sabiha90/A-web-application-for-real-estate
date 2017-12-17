@@ -1,6 +1,6 @@
 var express = require('express');
 var passwordHash = require('password-hash');
-
+var unquote = require('unquote')
 var router = express.Router();
 var fs = require('fs');
 
@@ -37,7 +37,46 @@ router.get('/add_details', function(req, res, next) {
   res.render('add_details', { "results":id });
   console.log(results);
 });
-
+router.get('/profile', function(req, res, next) {
+  var id = req.query.id;
+  connection.query('SELECT * FROM users WHERE id = ?',id, function (error, results, fields) {
+  console.log('this.sql', this.sql);
+  if(error)
+  {
+    res.send({
+      "code":400,
+      "failed":"error ocurred"
+    })
+  } 
+  else
+  {
+       
+        //console.log(results[0].user_name);
+        req.session.results = results
+        console.log('session',req.session.id);
+        connection.query('SELECT * from property_details where user_id=?',id, function (error, house_results, fields) {
+        console.log('this.sql', this.sql);
+        if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          });
+        }
+        else{
+          req.session.house_results = house_results;
+          console.log("The solution is",req.session.house_results);
+          console.log("The solution is",results);
+          res.render('profile',{"person": req.session.house_results,"person2":req.session.results});
+        }
+       
+        });
+        
+      }
+    
+});
+});
 router.get('/login', function(req, res){
     var message = '';
   res.render('login',{message: message});
@@ -214,7 +253,7 @@ router.post('/message', function(req,res){
 
 router.get('/message_details', function(req,res){
   var id = req.query.id;
-  connection.query('select m.messages,m.bname,m.bemail,m.vphone from message_tab m JOIN property_details p ON m.listing_ID = p.id JOIN users u ON p.user_id = u.id WHERE p.user_id = ? ', id, function (message_error, message_results, message_fields){
+  connection.query('select m.contact_ID, m.messages,m.bname,m.bemail,m.vphone from message_tab m JOIN property_details p ON m.listing_ID = p.id JOIN users u ON p.user_id = u.id WHERE p.user_id = ? ', id, function (message_error, message_results, message_fields){
   console.log('this.sql',this.sql);    
         if(message_error)
           {
@@ -222,15 +261,17 @@ router.get('/message_details', function(req,res){
             res.send({
             "code":400,
             "failed":"error ocurred"
-          })
+          });
         }
         else{
-          res.render('message_details',{"rows":message_results});
-        }
+          connection.query('select * from users where id = ? ', id, function (error, results, fields){
+          console.log('this.sql',this.sql);    
+          res.render('message_details',{"rows":message_results,"user_details":results});
         
       });
+      }
 });
-
+});
 
 
 
@@ -289,6 +330,8 @@ router.post('/search', function(req, res)
     {
        res.writeHead(200);
        res.end("Sorry Not Found!!");
+      
+       //res.render('header1',{"length":results.length});
     //res.send({
      // "code":400,
       //"failed":"error ocurred"
@@ -416,10 +459,13 @@ router.get('/home_search_results', function(req,res){
 
 router.get('/sort', function(req,res){
   var val = req.query.q;
-  var city = req.query.city;
-  if (val=='price')
+
+  var city = req.query.param1;
+  var sort_opt = req.query.o;
+  console.log(sort_opt);
+  if (val=='price' && sort_opt == 'ASC')
   {
-    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY price ASC ", city, function (error, results, fields) {
+    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY price ASC", city, function (error, results, fields) {
     console.log('this.sql',this.sql); 
     if(error)
           {
@@ -436,10 +482,30 @@ router.get('/sort', function(req,res){
   });   
   
   }
-
-  if (val=='number_of_bedrooms')
+  
+  if (val=='price' && sort_opt == 'DESC' )
   {
-    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY number_of_bedrooms ASC ", city, function (error, results, fields) {
+
+    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY price DESC", city, function (error, results, fields) {
+    console.log('this.sql',this.sql); 
+    if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          //res.render('search_results',{"rows":results});
+          res.send({"rows":results});
+        }
+  });   
+  }
+
+  if (val=='number_of_bedrooms' && sort_opt == 'ASC' )
+  {
+    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY number_of_bedrooms ASC ", [city,sort_opt],function (error, results, fields) {
     console.log('this.sql',this.sql); 
     if(error)
           {
@@ -454,9 +520,10 @@ router.get('/sort', function(req,res){
         }
   });
   }
-  if (val=='square_size')
+  if (val=='number_of_bedrooms' && sort_opt == 'DESC' )
   {
-    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY square_size ASC ", city, function (error, results, fields) {
+
+    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY number_of_bedrooms DESC ", [city,sort_opt],function (error, results, fields) {
     console.log('this.sql',this.sql); 
     if(error)
           {
@@ -470,7 +537,43 @@ router.get('/sort', function(req,res){
           res.send({"rows":results});
         }
   });
-  }      
+
+  }
+  if (val=='square_size' && sort_opt == 'ASC')
+  {
+    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY square_size ASC ", [city,sort_opt] ,function (error, results, fields) {
+    console.log('this.sql',this.sql); 
+    if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          res.send({"rows":results});
+        }
+  });
+  }  
+  else
+  {
+
+    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY square_size DESC ", [city,sort_opt] ,function (error, results, fields) {
+    console.log('this.sql',this.sql); 
+    if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          })
+        }
+        else{
+          res.send({"rows":results});
+        }
+  });
+  }    
 });
 
 router.get('/homepage_details', function(req,res){
@@ -505,8 +608,14 @@ router.get('/seller_results', function(req, res, next) {
           })
         }
         else{
-          res.render('seller_results',{"rows":results});
-        }
+          connection.query('select * from users where id = (select user_id from property_details where id = ?) ', id, function (error, user_results, fields){
+          console.log('this.sql',this.sql);    
+          res.render('seller_results',{"rows":results,"user_details":user_results});
+        
+      });
+      }
+          
+        
         
       });
 });
