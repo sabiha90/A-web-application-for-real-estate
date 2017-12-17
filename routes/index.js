@@ -43,6 +43,44 @@ router.get('/homepage', function(req, res, next) {
   res.render('home', { title: 'About me' });
 });*/
 
+
+router.get('/profile', function(req, res, next) {
+  var id = req.query.id;
+  connection.query('SELECT * FROM users WHERE id = ?',id, function (error, results, fields) {
+  console.log('this.sql', this.sql);
+  if(error)
+  {
+    res.send({
+      "code":400,
+      "failed":"error ocurred"
+    })
+  } 
+  else
+  {
+       
+        //console.log(results[0].user_name);
+        connection.query('SELECT * from property_details where user_id=?',id, function (error, house_results, fields) {
+        console.log('this.sql', this.sql);
+        if(error)
+          {
+            console.log("error ocurred",error);
+            res.send({
+            "code":400,
+            "failed":"error ocurred"
+          });
+        }
+        else{
+          console.log("The solution is",results);
+          res.render('profile',{"person": house_results,"person2":results});
+        }
+       
+        });
+        
+      }
+    
+});
+});
+
 router.get('/index', function(req,res,next){
   res.render('index',{ title: 'Home'});
 });
@@ -391,10 +429,14 @@ router.get('/message_details', function(req,res){
           })
         }
         else{
-          res.render('message_details',{"rows":message_results});
-        }
+          connection.query('select * from users where id = ? ', id, function (error, results, fields){
+          console.log('this.sql',this.sql);    
+          res.render('message_details',{"rows":message_results,"user_details":results});
+        
         
       });
+    }
+});
 });
 router.get('/sort', function(req,res){
   var val = req.query.q;
@@ -497,7 +539,7 @@ router.post('/delete', function(req, res, next) {
 });
 
 router.post('/deleteMessage', function(req, res, next) {
-   var contact_ID = req.query.contact_ID;
+   var contact_ID = req.query.id;
    console.log(contact_ID);
    connection.query('delete from message_tab where contact_ID = ? ',contact_ID, function (error, results, fields){
    console.log('this.sql',this.sql);
