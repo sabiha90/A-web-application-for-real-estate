@@ -306,17 +306,20 @@ html
 
                     }
                     document.getElementById("search_input").value = localStorage.getItem("search");
+                    document.getElementById("zip").value = localStorage.getItem("option");
 
                     function saveComment() {
                     var search = document.getElementById("search_input").value;
-                    
+                    var select = document.getElementById("zip").value;
+                    console.log(select);
 
                     localStorage.setItem("search", search);
-                    location.reload();
+                    localStorage.setItem("option", select);
+                    localStorage.reload();
                     return false;
                    //return true;
-                   }  
-      #mySidenav.sidenav
+                   }
+       #mySidenav.sidenav
         .container(style='background-color: #2874f0; padding-top: 10px;')
           span.sidenav-heading Home
           a.closebtn(href='javascript:void(0)', onclick='closeNav()') ×

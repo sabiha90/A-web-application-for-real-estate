@@ -438,12 +438,17 @@ router.get('/message_details', function(req,res){
     }
 });
 });
+
 router.get('/sort', function(req,res){
   var val = req.query.q;
-  var city = req.query.city;
-  if (val=='price')
-  {
-    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY price ASC ", city, function (error, results, fields) {
+ 
+  var criteria = req.query.criteria;
+  var criteria_val = req.query.criteria_val;
+  console.log(criteria_val);
+  var sort_opt = req.query.o;
+  console.log(sort_opt);
+  var str =  "SELECT * FROM `property_details` WHERE "+ criteria + " = \'" + criteria_val + "\' ORDER BY "+val +" " + sort_opt ;
+  connection.query(str ,function (error, results, fields) {
     console.log('this.sql',this.sql); 
     if(error)
           {
@@ -454,48 +459,14 @@ router.get('/sort', function(req,res){
           })
         }
         else{
-          //res.render('search_results',{"rows":results});
           res.send({"rows":results});
         }
   });   
-  
-  }
-
-  if (val=='number_of_bedrooms')
-  {
-    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY number_of_bedrooms ASC ", city, function (error, results, fields) {
-    console.log('this.sql',this.sql); 
-    if(error)
-          {
-            console.log("error ocurred",error);
-            res.send({
-            "code":400,
-            "failed":"error ocurred"
-          })
-        }
-        else{
-          res.send({"rows":results});
-        }
-  });
-  }
-  if (val=='square_size')
-  {
-    connection.query("SELECT * FROM `property_details` WHERE `city`= ? ORDER BY square_size ASC ", city, function (error, results, fields) {
-    console.log('this.sql',this.sql); 
-    if(error)
-          {
-            console.log("error ocurred",error);
-            res.send({
-            "code":400,
-            "failed":"error ocurred"
-          })
-        }
-        else{
-          res.send({"rows":results});
-        }
-  });
-  }      
 });
+
+
+
+
 
 router.get('/seller_results', function(req, res, next) {
   var id = req.query.id;
