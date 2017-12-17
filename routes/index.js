@@ -255,7 +255,7 @@ router.post('/search_results', function(req, res)
   var street = req.body.street;
   if(zipcode)
   {
-  connection.query("SELECT * FROM `property_details` WHERE `zipcode` LIKE ? ORDER BY `price`  ", '%' + zipcode + '%', function (error, results, fields) {
+  connection.query("SELECT * FROM `property_details` WHERE `zipcode` LIKE ? ", '%' + zipcode + '%', function (error, results, fields) {
   console.log('this.sql', this.sql);
  
   //if(error)
@@ -270,7 +270,7 @@ router.post('/search_results', function(req, res)
     res.writeHead(200);
     res.end("Sorry Not Found!!");
   }
-  else if(results.length<6)
+  else 
   {
     
     console.log('The solution is: ', results);
@@ -281,7 +281,7 @@ router.post('/search_results', function(req, res)
 }
 if(city)
   {
-  connection.query("SELECT * FROM `property_details` WHERE `city` LIKE ? ORDER BY `price`  ", '%' + city + '%', function (error, results, fields) {
+  connection.query("SELECT * FROM `property_details` WHERE `city` LIKE ? ", '%' + city + '%', function (error, results, fields) {
   console.log('this.sql', this.sql);
 
   //if(error)
@@ -296,7 +296,7 @@ if(city)
     res.writeHead(200);
     res.end("Sorry Not Found!!");
   }
-  else if(results.length<6)
+  else
   {
 
     console.log('The solution is: ', results);
@@ -321,7 +321,7 @@ if(street)
     res.writeHead(200);
     res.end("Sorry Not Found!!");
   }
-  else if(results.length<6)
+  else
   {
 
     console.log('The solution is: ', results);
@@ -531,7 +531,6 @@ router.post('/delete', function(req, res, next) {
         }
         else{
           console.log('The solution is: ', results);
-          res.render('homepage');
         }
         
     
