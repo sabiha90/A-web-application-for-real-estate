@@ -129,8 +129,9 @@ html
       }
       .panel-primary {
       border-color: #337ab7;
-      margin-top: 60px;
+      margin-top: 0px;
       }
+      #divAsc{float:right;}
   | &#x9;
   body
     // Background
@@ -159,7 +160,12 @@ html
                    option(value='price') Price
                    option(value='number_of_bedrooms') Number of Bedrooms
                    option(value='square_size') Square feet
-
+                #divAsc
+                  input(type="radio", name= "radioSel", class="radioSel", value='ASC', checked) 
+                  label(for="contactChoice1") Ascending
+                  br
+                  input(type="radio", name= "radioSel",class="radioSel",value="DESC") 
+                  label(for="contactChoice1") Descending
         .col-xs-9.col-sm-9.col-md-9
           .container
           #searchResult
