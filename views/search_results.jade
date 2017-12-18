@@ -129,6 +129,7 @@ html
                    option(value='price') Price
                    option(value='number_of_bedrooms') Number of Bedrooms
                    option(value='square_size') Square feet
+                   option(value='year_of_construction') Construction year
                 #divAsc
                   input(type="radio", name= "radioSel", class="radioSel", value='ASC',onchange="loadDoc()", checked) 
                   label(for="contactChoice1") Ascending
@@ -144,7 +145,7 @@ html
                     a(href="home_search_results?id=#{item.id}") 
                      p.pricetag$#{item.price} 
                      img(src="#{item.image}", style="height:250px;width:400px;")
-                    p.text-center #{item.house_number}, #{item.street}, #{item.city}, #{item.state}, #{item.zipcode}
+                    p.text-center #{item.house_number}, #{item.street}, #{item.city}, #{item.state}, #{item.zipcode}, Beds: #{item.number_of_bedrooms}, Area: #{item.square_size},Built year: #{item.year_of_construction}
 
     #footer  
 
@@ -197,7 +198,7 @@ html
                 img.setAttribute("height","250px");
                 img.setAttribute("width","400px");
                 p2.setAttribute("class","text-center");
-                p2.innerHTML = row.house_number + ", " + row.street + ", " + row.city + ", " + row.state;
+                p2.innerHTML = row.house_number + ", " + row.street + ", " + row.city + ", " + row.state + ", Beds:" + row.number_of_bedrooms + ", Built year:" + row.year_of_construction;
                 div.setAttribute("id","featureBox");
 
               

@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var fs = require('fs');
+var passwordHash = require('password-hash');
 /* GET home page. */
 router.get('/', function(req, res, next) {
   connection.query('select * from property_details LIMIT 4', function (error, results, fields){
@@ -156,7 +157,7 @@ router.post('/signup', function(req, res){
     
     var users = {
       "user_name": req.body.user_name,
-      "password": req.body.password,
+      "password": passwordHash.generate(req.body.password),
       "first_name": req.body.first_name,
       "last_name": req.body.last_name,
       "mob_no":  req.body.mob_no
