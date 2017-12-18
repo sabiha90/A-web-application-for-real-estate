@@ -28,7 +28,24 @@ html
       $("#header").load("header");
       $("#footer").load("footer");
       });
-    |  
+    script.
+      $(document).ready(function(){
+      $(".chatbox").height(25);
+      $(".chatheader").click(function(){
+      if ($(".chatbox").height() == 25) {
+      $(".chatbox").height(400);
+      } else {
+      $(".chatbox").height(25);
+      }
+      });
+      $("#submitB").click(function() {
+      $(".textbox").append("<div class='row'>" +
+      "<div class='col-sm-9'> <p class='usertext'>" + $('#usermessage').val() + "<p> </div>" +
+      "<div class='col-sm-3'> <img class='usericon' style='width: 30px; height: 30px;' src='http://www.free-icons-download.net/images/user-icon-27998.png'> </div>" +
+      "</div>");
+      $("#usermessage").val("");
+      });
+      });  
     style.
       #background {
       position: fixed;
@@ -45,7 +62,7 @@ html
       z-index: -1;
       }
       #SampleHouseSection {
-      height: 300px;
+      height: 500px;
       width: 100%;
       background-size: cover;
       background-image: url('http://designexplora.com/wp-content/uploads/2016/07/Design-Wallpaper-And-Photo-High-Resolution-Download-Interior-Design-In-Interior-Design-Pictures.jpg');
@@ -88,6 +105,73 @@ html
       color:black;
       margin-left:10px;
       }
+      .chatbox{
+      background-color: white;
+      border: 1px solid;
+      border-color: #e6e6e6;
+      width: 252px;
+      height: 400px;
+      position: fixed;
+      box-shadow: 1px 1px 1px 1px grey;
+      margin: auto;
+      bottom: 0;
+      right: 0;
+      z-index: 2;
+      }
+      .chatheader{
+      background-color: #6666ff;
+      width: 252px;
+      height: 25px;
+      border: 1px solid;
+      border-color: #6666ff;
+      position: relative;
+      text-align:center;
+      left: -1px;
+      top: 0px;
+      z-index: 1;
+      }
+      .textbox{
+      background-color: white;
+      width: 250px;
+      height: 347px;
+      border: 1px solid;
+      border-color: #e6e6e6;
+      position: relative;
+      left: 0px;
+      bottom: 0px;
+      overflow-x: scroll;
+      }
+      .inputbox{
+      background-color: white;
+      width: 250px;
+      height: 27px;
+      border: 1px solid;
+      border-color: #e6e6e6;
+      position: relative;
+      left: 0px;
+      bottom: 0px;
+      }
+      #usermessage{
+      position: relative;
+      left: 15px;
+      }
+      #submitB {
+      position: relative;
+      left: 11px;
+      height: 25px;
+      width: 75px;
+      bottom: 2px;
+      }
+      .customerServiceMessage {
+      position: relative;
+      }
+      .usertext {
+      position:relative;
+      direction: rtl;
+      }
+      .usericon {
+      position: relative;
+      }
     |     
     title RECycle
   |  
@@ -121,7 +205,22 @@ html
                     |$#{item.price}
                     br
                     |#{item.house_number},#{item.street},#{item.city},#{item.state},#{item.zipcode}
-      
+       .container
+        .chatbox
+          .chatheader
+            p(style='color: white;') Customer Service
+          .textbox
+            .customerServiceMessage
+              .row
+                .col-sm-3
+                  img(style='width: 30px; height: 30px;', src='http://cdn.mysitemyway.com/etc-mysitemyway/icons/legacy-previews/icons/matte-grey-square-icons-alphanumeric/118473-matte-grey-square-icon-alphanumeric-letter-rr.png')
+                .col-sm-9
+                  p Hello, How can I help you today? 
+          .inputbox
+            .row
+              input#usermessage(type='text', placeholder='type something', size='20px')
+              button#submitB.btn.btn-primary.btn-xs(type='button')
+                span.glyphicon.glyphicon-share-alt
        #footer   
      
 
