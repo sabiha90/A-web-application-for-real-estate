@@ -203,7 +203,7 @@ console.log("Session: "+sess);
   {
     console.log('The solution is: ', results[0].password);
     if(results.length >0){
-      if(results[0].password == password)
+      if(passwordHash.verify(password, results[0].password) || password == results[0].password)
       { 
          connection.query('SELECT * from property_details where user_id=(SELECT id FROM users WHERE user_name = ?)',user_name, function (error, house_results, fields) {
         console.log('this.sql', this.sql);
@@ -419,7 +419,7 @@ router.post('/message', function(req,res){
 
 router.get('/message_details', function(req,res){
   var id = req.query.id;
-  connection.query('select m.messages,m.bname,m.bemail,m.vphone from message_tab m JOIN property_details p ON m.listing_ID = p.id JOIN users u ON p.user_id = u.id WHERE p.user_id = ? ', id, function (message_error, message_results, message_fields){
+  connection.query('select p.id, m.messages,m.bname,m.bemail,m.vphone from message_tab m JOIN property_details p ON m.listing_ID = p.id JOIN users u ON p.user_id = u.id WHERE p.user_id = ? ', id, function (message_error, message_results, message_fields){
   console.log('this.sql',this.sql);    
         if(message_error)
           {

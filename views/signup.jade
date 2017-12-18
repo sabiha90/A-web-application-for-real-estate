@@ -1,6 +1,12 @@
 doctype html
 html
   head
+    script(async='', src='https://www.googletagmanager.com/gtag/js?id=UA-111304983-1')
+    script.
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'UA-111304983-1');
     meta(charset='utf-8')
     | &#x9;
     meta(name='viewport', content='width=device-width, initial-scale=1')
@@ -112,11 +118,7 @@ html
                     .col-md-9
                       input.form-control(type='password', name='password', placeholder='Password')
                   | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
-                  .form-group
-                    label(for='remember') 
-                     .col-md-9
-                       input.form-control(type="checkbox", text="Remember me")
-                       | Remember me
+                  
                       
                  
                   | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
@@ -128,9 +130,10 @@ html
                   | &#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;&#x9;
                   .col-md-offset-3.col-md-9
                    .clearfix
-                    button#btn-signup.btn.btn-info(type='submit')
-                      amp Sign Up
                     button.cancelbtn(type="button") Cancel
+                     button#btn-signup.btn.btn-info(type='submit')
+                      amp  Sign Up
+                    
     // Footer
     #footer  
 
