@@ -334,7 +334,7 @@ if(street)
 });
 
 router.post('/add_details', function(req, res){
-
+  image = 'https://i.imgur.com/' + req.body.image;
   var details = {
       "square_size": req.body.square_size,
       "number_of_bedrooms": req.body.number_of_bedrooms,
@@ -349,7 +349,7 @@ router.post('/add_details', function(req, res){
       "state": req.body.state,
       "country": req.body.country,
       "price": req.body.price,
-      "image": req.body.image,
+      "image": image,
       "user_id": req.query.id
     }
 //console.log(req.file.image.name);

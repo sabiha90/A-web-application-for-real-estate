@@ -62,7 +62,7 @@ html
       z-index: -1;
       }
       #SampleHouseSection {
-      height: 500px;
+      height: 300px;
       width: 100%;
       background-size: cover;
       margin-top:-20px;
@@ -176,7 +176,7 @@ html
     |     
     title RECycle
   |  
-  body
+  body(onload='clearStore()')
 
     // Background
     #background
@@ -222,6 +222,11 @@ html
               input#usermessage(type='text', placeholder='type something', size='15px')
               button#submitB.btn.btn-primary.btn-xs(type='button')
                 span.glyphicon.glyphicon-share-alt
+          script.
+            function clearStore()
+                     { 
+                        localStorage.clear();
+                     }
        #footer   
      
 
