@@ -254,6 +254,7 @@ router.post('/search_results', function(req, res)
   var zipcode= req.body.zipcode;
   var city = req.body.city;
   var street = req.body.street;
+  console.log(city);
   if(zipcode)
   {
   connection.query("SELECT * FROM `property_details` WHERE `zipcode` LIKE ? ", '%' + zipcode + '%', function (error, results, fields) {
